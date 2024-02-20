@@ -28,6 +28,7 @@ namespace OtoRobotWeb2.Controllers
         private OfferService _offerService;     
         private readonly AppSettings _appSettings;
         int userid = 0;  
+        //önemli olan yerler 
         public static bool localdsocketprocescalistir = false;//local calısmak icin true, canlıya alırken false yapılmalı!!!!sorguyu socketprcess projesine gonderme
         public static bool localdconncalistir = false   ;//local calısmak icin true, canlıya alırken false yapılmalı!!!! sorguyu conn projesine gonderme
         public static List<ResponseItem> yanitVarMi1List = new List<ResponseItem>(); // Sonuc bulunamayan listesi
