@@ -1,0 +1,594 @@
+﻿@using OtoRobotWeb2.Models.Response
+@*@model IEnumerable<OtoRobotWeb2.Models.MongoDb.logTime>*@
+@model OtoLogResponse
+
+@{
+    ViewData["Title"] = "LogIndex";
+}
+
+<h1>Sorgu Raporu</h1>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<a asp-controller="Home" asp-action="Index"> <button class="btn"><i class="fa fa-home fa-lg"></i></button> </a>
+
+<style>
+    .btn {
+        background-color: DodgerBlue;
+        border: none;
+        color: white;
+        padding: 12px 16px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+        .btn:hover {
+            background-color: RoyalBlue;
+        }
+
+    .bg-orange {
+        background-color: #E64A19;
+        color: white;
+    }
+
+    .bg-dark-blue {
+        background-color: #0D47A1;
+        color: white;
+    }
+
+    .bg-light-blue {
+        background-color: #2196F3;
+        color: white;
+    }
+
+</style>
+
+<div class="container mt-4">
+
+
+    <!--Card Form End-->
+    <div class="card">
+        <h5 class="card-header bg-orange py-4">Kayıt Sorgu Bilgileri</h5>
+        <div class="card-body">
+            <!--Firma ismi Start-->
+            <div class="row mb-5">
+                @{
+                    string kullaniciAdi = "", kullaniciKodu = "";
+                    //var temp = Model.LogTimes.Where(x => !string.IsNullOrEmpty(x.FirmaAdi)).FirstOrDefault();
+                    //if (temp != null)
+                    //{
+                    //    kullaniciAdi = temp.FirmaAdi;
+                    //    kullaniciKodu = temp.FirmaKodu.ToString();
+
+                    //}
+                    kullaniciAdi = Model.Unvani.ToString();
+                    kullaniciKodu = Model.KullaniciKodu.ToString();
+
+                }
+                <h3>@kullaniciAdi (@kullaniciKodu) </h3>
+                @*<label class="col-form-label fw-bold fs-5">@(Model.Sorguzamani.AddMonths(-1).ToShortDateString())-@(Model.Sorguzamani.ToShortDateString()) Kullanıcı Sorgu listesi</label>*@
+
+
+            </div>
+            <!--Firma ismi End-->
+            <!--Firma Secimi Start-->
+            <div class="mb-5">
+                @*  @{
+                var id = ViewBag.Id;
+                if (id != null)
+                {
+
+                if (id == 100 || id==208)
+                {
+                <form asp-controller="Home" asp-action="LogIndex" method="get">
+                <div class="row">
+                <div class="col-3">
+                <select asp-items="@Model.Tvmdetay" name="id" id="select_tvmkodu" class="form-control"></select>
+                </div>
+                </div>
+                </form>
+                }
+                }
+                } *@
+            </div>
+            <!--Firma Secimi End-->
+            <!--KULLANICI SEÇİM EKRANI Start-->
+            <div class="mb-5 ">
+                <form asp-controller="Home" asp-action="LogIndex" method="post" class="row g-3">
+
+                    @{
+                        string custom_style2 = "";
+                        if (Model.rd_detayli)
+                            custom_style2 = "display:none;";
+                        string custom_style = "", custom_style4 = "";
+                        if (!Model.rd_detayli)
+                            custom_style = "display:none";
+                        if (Model.rd_multiozet)
+                        {
+                            custom_style = "";
+                            custom_style2 = custom_style4 = "display:none;";
+                        }
+                    }
+
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-3">
+                                <label class="col-form-label fw-bold fs-5 ">Sorgu Sonuçları : </label>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="sorgu" id="detayli" checked="@Model.rd_detayli" value="sorguturu1">
+                                    <label class="form-check-label" for="sorgu"> Detaylı </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="sorgu" id="ozet" checked="@Model.rd_ozet" value="sorguturu2">
+                                    <label class="form-check-label" for="sorgu"> Özet </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="sorgu" id="multiozet" checked="@Model.rd_multiozet" value="sorguturu3">
+                                    <label class="form-check-label" for="sorgu"> Toplu Oem Sorgu </label>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row" id="ozetdate" style="@custom_style2">
+                            <div class="col-3">
+                                <label id="date_ozet_label" class="col-form-label fw-bold fs-5">Kayıt Tarihi :</label>
+                            </div>
+                            <div class="col-3">
+                                <input type="date" class="form-control" name="date_ozet" required value="@Model.Date_Ozet.ToString("yyyy-MM-dd")">
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    @{
+                        string custom_style3 = "";
+                        if (Model.HataMesaji == null)
+                            custom_style3 = "display:none";
+                        <div class="row" style="">
+                            <div class="col-12">
+                                <label id="hatamesaji" class="col-form-label fw-bold fs-7" style="color:red;">@Model.HataMesaji</label>
+                            </div>
+
+                        </div>
+
+
+                    }
+                    <div class="col-12" id="detaylidiv" style="@custom_style">
+                        <div class="row">
+                            <div class="col-3">
+                                <label id="date_baslangic_label" class="col-form-label fw-bold fs-5">Başlangıç Tarihi : </label>
+                            </div>
+                            <div class="col-3">
+                                <input type="date" name="date_baslangic" class="form-control" value="@Model.Date_Baslangic.ToString("yyyy-MM-dd")" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <label id="date_bitis_label" class="col-form-label fw-bold fs-5">Bitiş Tarihi :</label>
+                            </div>
+                            <div class="col-3">
+                                <input type="date" class="form-control" name="date_bitis" value="@Model.Date_Bitis.ToString("yyyy-MM-dd")">
+                            </div>
+                        </div>
+                        <div class="row" style="@custom_style4" id="div_kullanicilar">
+                            <div class="col-3">
+                                <label id="kullanicilar" class="col-form-label fw-bold fs-5">Kullanıcılar : </label>
+                            </div>
+                            <div class="col-3">
+                                <select asp-items="@Model.TVMKullanicilars" name="kullanicikodu" id="kullaniciListesi" class="form-control"></select>
+                            </div>
+                            <div class="col-3">
+                                <input type="hidden" name="tvmkodu" id="tvmkodu" value="@Model.TvmKodu" />
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-12">
+                        <div class="row ">
+                            <div class="col-3">
+                            </div>
+                            <div class="col-3">
+                                <button type="submit" id="listele" value="Listele" class="btn btn-primary " style="width:100%">Listele</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <!--KULLANICI SEÇİM EKRANI End-->
+        </div>
+    </div>
+    <!--Card Form End-->
+
+
+    <br />
+    @{
+
+        if (Model.rd_detayli)
+        {
+
+
+            <!-- DETAYLI VERİ TABLOSU START-->
+            <div class="card " id="detayliTablo" style="">
+                <h5 class="card-header bg-dark-blue py-4">Kayıt Listesi</h5>
+                <div class="card-body">
+                    <div class="row mb-5">
+                        <div class="col-12 align-content-center">
+
+                            <table id="example" class="stripe hover cell-border order-column" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+
+                                        <th>
+                                            <div class="row mb-3  font-weight-bold fs-5 bg-light">
+                                                <div class="col-4"> SorguMetni</div>
+                                                <div class="col-2"> Sorgu Başlangıç Tarih ve Saati</div>
+                                                <div class="col-2"> Sorgu Bitiş Tarih ve Saati</div>
+                                                <div class="col-2"> Toplam Sorgu Süresi (dk-sn)</div>
+                                                <div class="col-2"> Sorgu Yapılan Tedarikçi Sayısı</div>
+                                            </div>
+
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model.LogTimes != null)
+                                        @foreach (var item in Model.LogTimes)
+                                        {
+                                            <tr>
+                                                <td>
+
+                                                    <div class="row mb-3  font-weight-bold fs-5 bg-warning">
+                                                        <div class="col-4"> @Html.DisplayFor(modelItem => item.SorguMetni)</div>
+                                                        <div class="col-2"> @Html.DisplayFor(modelItem => item.TotalSorguBaslangicDisplay)</div>
+                                                        <div class="col-2"> @Html.DisplayFor(modelItem => item.TotalSorguBitisDisplay)</div>
+                                                        <div class="col-2">
+                                                            @if (item.TotalSeconds > 60)
+                                                            {
+                                                                var a = Math.Round(item.TotalSeconds / 60);
+                                                                var b = Math.Round(item.TotalSeconds % 60);
+                                                                var c = a + "dk " + b + "sn".ToString();
+                                                                @Html.DisplayFor(modelItem =>c)
+                                                            }
+                                                            else
+                                                            {
+                                                                var a = Convert.ToInt64(Math.Round(item.TotalSeconds)) + "sn";
+                                                                @Html.DisplayFor(modelItem =>a)
+                                                            }
+                                                        </div>
+                                                        <div class="col-2"> @item.logTimeSirketler.Count</div>
+                                                    </div>
+                                                    <div class="accordion" id="accordionExample">
+                                                        <div class="accordion-item">
+                                                            <h2 class="accordion-header" id="headingOne@(item.Id)">
+                                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne@(item.Id)" aria-expanded="false" aria-controls="collapseOne@(item.Id)">
+                                                                    Detay için tıklayınız -->
+                                                                </button>
+                                                            </h2>
+                                                            <div id="collapseOne@(item.Id)" class="accordion-collapse collapse" aria-labelledby="headingOne@(item.Id)" data-bs-parent="#accordionExample" style="">
+                                                                <div class="accordion-body">
+                                                                    <div class="row mb-3  font-weight-bold fs-5">
+                                                                        <div class="col-3">TedarikçiAdı</div>
+                                                                        <div class="col-3">SorguBaslangici</div>
+                                                                        <div class="col-3">SorguBitisi</div>
+                                                                        <div class="col-3">TotalSeconds</div>
+                                                                    </div>
+                                                                    @foreach (var item2 in item.logTimeSirketler)
+                                                                    {
+                                                                        <div class="row">
+                                                                            <div class="col-3">  @Html.DisplayFor(modelItem => item2.TedarikciAdi)</div>
+                                                                            <div class="col-3"> @Html.DisplayFor(modelItem => item2.SorguBaslangici)</div>
+                                                                            <div class="col-3"> @Html.DisplayFor(modelItem => item2.SorguBitisi)</div>
+                                                                            <div class="col-3">@((item2.SorguBitisi - item2.SorguBaslangici).TotalSeconds)</div>
+                                                                        </div>
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+
+                                            </tr>
+
+                                        }
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--DETAYLI VERİ TABLOSU END-->
+        }
+    }
+    @{
+        if (Model.rd_ozet && Model.PersonDetails != null)
+        {
+            <!-- ÖZET VERİ TABLOSU START-->
+            <div class="card" id="ozetTablo">
+                <h5 class="card-header bg-dark-blue py-4">Kayıt Listesi</h5>
+                <div class="card-body">
+                    <div class="row mb-5">
+                        <div class="col-12 align-content-center">
+
+                            <table id="example" class="stripe hover cell-border order-column" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+
+                                        <th>
+                                            <div class="row mb-3  font-weight-bold fs-5 bg-light">
+                                                <div class="col-4"> Kullanıcı Adı</div>
+                                                <div class="col-4"> ToplamSorguSayısı</div>
+                                            </div>
+
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model.PersonDetails != null)
+                                        @foreach (var item in Model.PersonDetails)
+                                        {
+
+                                            <tr>
+                                                <td>
+
+                                                    <div class="row mb-3  font-weight-bold fs-5 bg-warning">
+                                                        <div class="col-4"> @Html.DisplayFor(modelItem => item.Name)</div>
+                                                        <div class="col-4"> @Html.DisplayFor(modelItem => item.Count)</div>
+                                                    </div>
+
+                                                </td>
+                                            </tr>
+
+
+
+                                        }
+                                    @if (Model.Total > 0)
+                                    {
+
+                                        <tr>
+                                            <td>
+
+                                                <div class="row mb-3  font-weight-bold fs-5 bg-warning">
+                                                    <div class="col-4"> Sorgu Toplamı</div>
+                                                    <div class="col-4">@Model.Total</div>
+                                                </div>
+
+                                            </td>
+                                        </tr>
+
+
+
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- ÖZET VERİ TABLOSU END-->
+        }
+    }
+    @{
+
+        if (Model.rd_multiozet)
+        {
+
+            <!-- DETAYLI VERİ TABLOSU START-->
+            <div class="card " id="detayliTablo" style="">
+                <h5 class="card-header bg-dark-blue py-4">Kayıt Listesi</h5>
+                <div class="card-body">
+                    <div class="row mb-5">
+                        <div class="col-12 align-content-center">
+
+                            <table id="example" class="stripe hover cell-border order-column" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+
+                                        <th>
+                                            <div class="row mb-3  font-weight-bold fs-5 bg-light">
+                                                <div class="col-4"> Excelden Okunana Kayıt Sayısı</div>
+                                                <div class="col-2"> Sorgudan Dönen Kayıt Sayısı</div>
+                                                <div class="col-2"> Sorgu Bitiş Tarih ve Saati</div>
+                                                <div class="col-2"> Toplam Sorgu Süresi (dk-sn)</div>
+                                                <div class="col-2"> Sorgu Yapılan Tedarikçi Sayısı</div>
+                                            </div>
+
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model.LogTimes != null)
+                                        @foreach (var item in Model.LogTimes)
+                                        {
+                                            <tr>
+                                                <td>
+
+                                                    <div class="row mb-3  font-weight-bold fs-5 bg-warning">
+                                                        @{
+                                                            var sayilar = item.SorguMetni.Split('&');
+                                                        }
+                                                        <div class="col-4"> @Html.DisplayFor(modelItem => sayilar[0])</div>
+                                                        <div class="col-2"> @Html.DisplayFor(modelItem => sayilar[1])</div>
+                                                        <div class="col-2"> @Html.DisplayFor(modelItem => item.TotalSorguBitisDisplay)</div>
+                                                        <div class="col-2">
+                                                            @if (item.TotalSeconds > 60)
+                                                            {
+                                                                var a = Math.Round(item.TotalSeconds / 60);
+                                                                var b = Math.Round(item.TotalSeconds % 60);
+                                                                var c = a + "dk " + b + "sn".ToString();
+                                                                @Html.DisplayFor(modelItem =>c)
+                                                            }
+                                                            else
+                                                            {
+                                                                var a = Convert.ToInt64(Math.Round(item.TotalSeconds)) + "sn";
+                                                                @Html.DisplayFor(modelItem =>a)
+                                                            }
+                                                        </div>
+                                                        <div class="col-2"> @(item.logTimeSirketler != null ? item.logTimeSirketler.Count : 0)</div>
+                                                    </div>
+                                                    <div class="accordion" id="accordionExample">
+                                                        <div class="accordion-item">
+                                                            <h2 class="accordion-header" id="headingOne@(item.Id)">
+                                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne@(item.Id)" aria-expanded="false" aria-controls="collapseOne@(item.Id)">
+                                                                    Detay için tıklayınız -->
+                                                                </button>
+                                                            </h2>
+                                                            <div id="collapseOne@(item.Id)" class="accordion-collapse collapse" aria-labelledby="headingOne@(item.Id)" data-bs-parent="#accordionExample" style="">
+                                                                <div class="accordion-body">
+                                                                    <div class="row mb-3  font-weight-bold fs-5">
+                                                                        <div class="col-3">TedarikçiAdı</div>
+                                                                        <div class="col-3">SorguBaslangici</div>
+                                                                        <div class="col-3">SorguBitisi</div>
+                                                                        <div class="col-3">TotalSeconds</div>
+                                                                    </div>
+                                                                    @{
+                                                                        if (item.logTimeSirketler != null)
+                                                                            foreach (var item2 in item.logTimeSirketler)
+                                                                            {
+                                                                                <div class="row">
+                                                                                    <div class="col-3">  @Html.DisplayFor(modelItem => item2.TedarikciAdi)</div>
+                                                                                    <div class="col-3"> @Html.DisplayFor(modelItem => item2.SorguBaslangici)</div>
+                                                                                    <div class="col-3"> @Html.DisplayFor(modelItem => item2.SorguBitisi)</div>
+                                                                                    <div class="col-3">@((item2.SorguBitisi - item2.SorguBaslangici).TotalSeconds)</div>
+                                                                                </div>
+                                                                            }
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+
+                                            </tr>
+
+                                        }
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--DETAYLI VERİ TABLOSU END-->
+        }
+    }
+</div>
+<script>
+
+
+    $(document).ready(function () {
+        console.log(123)
+        if (document.getElementById("detayli").checked) {
+            $('input[name="date_baslangic"]').attr("required", "");
+            $('input[name="date_bitis"]').attr("required", "");
+            $('input[name="date_ozet"]').removeAttr("required");
+        }
+        else {
+            $('input[name="date_ozet"]').attr("required", "");
+
+            $('input[name="date_baslangic"]').removeAttr("required");
+            $('input[name="date_bitis"]').removeAttr("required");
+        }
+        var table = $('#example').DataTable({
+            "dom": 'Bflrtip',
+            "ordering": false,
+            "lengthMenu": [[-1, 100, 50, 25], ["All", 100, 50, 25]],
+            buttons: [
+                {
+                    extend: 'excelHtml5',
+                    text: 'Export to Excel',
+                    title: 'Excel',
+                    alignment: "center",
+                    autoFilter: false,
+                },
+                {
+                    extend: 'pdfHtml5',
+                    alignment: "center",
+                    pageSize: 'A4', //formato stampa
+                    title: 'Pdf',
+                }
+            ]
+        });
+        $(".buttons-excel").html('<img src="/assets/images/excel.png" width="25" height="25">')
+        $(".buttons-pdf").html('<img src="/assets/images/pdf.png" width="25" height="25">')
+
+        $("#detayli").change(function () {
+
+            var detayli = document.getElementById("detayli");
+            console.log(detayli)
+            if (detayli.ariaChecked = true) {
+                $("#detaylidiv").show();
+                $("#detayliTablo").show();
+                $("#ozetTablo").hide();
+                $("#ozetdate").hide();
+                $("#hatamesaji").hide();
+                $("#div_kullanicilar").show();
+                $('input[name="date_baslangic"]').attr("required", "");
+                $('input[name="date_bitis"]').attr("required", "");
+                $('input[name="date_ozet"]').removeAttr("required");
+
+            }
+        })
+        $("#ozet").change(function () {
+            var ozet = document.getElementById("ozet");
+            console.log(ozet)
+            if (ozet.ariaChecked = true) {
+                $("#detaylidiv").hide();
+                $("#detayliTablo").hide();
+                $("#ozetTablo").show();
+                $("#hatamesaji").hide();
+                $("#ozetdate").show();
+
+                $('input[name="date_ozet"]').attr("required", "");
+
+                $('input[name="date_baslangic"]').removeAttr("required");
+                $('input[name="date_bitis"]').removeAttr("required");
+            }
+        });
+        $("#multiozet").change(function () {
+
+            var mozet = document.getElementById("multiozet");
+            console.log(mozet)
+            if (mozet.ariaChecked = true) {
+                $("#detaylidiv").show();
+                $("#detayliTablo").show();
+                $("#ozetTablo").hide();
+                $("#ozetdate").hide();
+                $("#hatamesaji").hide();
+                $("#div_kullanicilar").hide();
+                $('input[name="date_baslangic"]').attr("required", "");
+                $('input[name="date_bitis"]').attr("required", "");
+                $('input[name="date_ozet"]').removeAttr("required");
+
+            }
+        })
+
+
+
+
+
+    });
+
+</script>
+

@@ -1,0 +1,416 @@
+﻿<style>
+
+
+    /*oto Robot bolumu icin*/
+    .bg-orange {
+        background-color: #E64A19;
+        color: white;
+    }
+
+    .bg-dark-blue {
+        background-color: #0D47A1;
+        color: white;
+    }
+
+    .bg-light-blue {
+        background-color: #2196F3;
+        color: white;
+    }
+
+    .btn-orange {
+        --bs-btn-color: #fff;
+        --bs-btn-bg: #E64A19;
+        --bs-btn-border-color: #E64A19;
+        --bs-btn-hover-color: #fff;
+        --bs-btn-hover-bg: #D63A11;
+        --bs-btn-hover-border-color: #D63A11;
+        --bs-btn-focus-shadow-rgb: 49, 132, 253;
+        --bs-btn-active-color: #fff;
+        --bs-btn-active-bg: #D63A11;
+        --bs-btn-active-border-color: #0a53be;
+        --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+        --bs-btn-disabled-color: #fff;
+        --bs-btn-disabled-bg: #E64A19;
+        --bs-btn-disabled-border-color: #E64A19;
+    }
+    /*Bagli Sirketler Start*/
+    .accordion-button {
+        color: white;
+        background: rgba(35, 65, 100, .85);
+    }
+
+    .accordion-item {
+        border: 1px solid rgba(35, 65, 100, .15)
+    }
+
+    .accordion-button:not(.collapsed) {
+        color: inherit;
+        background: rgb(35, 65, 100);
+        color: white;
+    }
+
+    .accordion-button::after {
+        filter: brightness(0%) invert(100%);
+    }
+
+    .accordion-button:not(.collapsed)::before {
+        filter: brightness(0%) invert(100%);
+    }
+    /*Bagli Sirketler End*/
+
+    /*Bilgi alanı Strat*/
+    .dotg {
+        height: 15px;
+        width: 15px;
+        background-color: #2a2;
+        border-radius: 50%;
+        display: inline-block;
+        position: relative;
+        top: 2px;
+    }
+
+    .dotr {
+        height: 15px;
+        width: 15px;
+        background-color: #a22;
+        border-radius: 50%;
+        display: inline-block;
+        position: relative;
+        top: 2px;
+    }
+
+    /*Bilgi alanı End*/
+
+    /*Tooltips Start*/
+    .tooltipExm {
+        position: relative;
+        display: inline-block;
+    }
+
+        .tooltipExm .tooltipExmtext {
+            visibility: hidden;
+            width: 350px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+            .tooltipExm .tooltipExmtext::after {
+                content: "";
+                position: absolute;
+                top: 100%;
+                left: 17%;
+                margin-left: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: #333 transparent transparent transparent;
+            }
+
+        .tooltipExm:hover .tooltipExmtext {
+            visibility: visible;
+            opacity: 1;
+        }
+    /*Tooltips End*/
+    /*Tooltips left Strat*/
+    .tooltipExm1 {
+        position: relative;
+        display: inline-block;
+    }
+
+        .tooltipExm1 .tooltipExmtext1 {
+            visibility: hidden;
+            width: 350px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: -200%;
+            right: 120%;
+            margin-left: 0px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+            .tooltipExm1 .tooltipExmtext1::after {
+                content: "";
+                position: absolute;
+                bottom: 60px;
+                right: -3%;
+                margin-left: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: transparent transparent transparent #333;
+            }
+
+        .tooltipExm1:hover .tooltipExmtext1 {
+            visibility: visible;
+            opacity: 1;
+        }
+
+    /*Tooltips left End*/
+
+    /*datatable colum input Start*/
+    thead input {
+        width: 100%;
+    }
+    /*datatable colum input End*/
+
+    /*Tablo Sorting Start*/
+    /*    table.dataTable thead .sorting,
+            table.dataTable thead .sorting_asc,
+            table.dataTable thead .sorting_desc{
+                background:none;
+            }*/
+
+    /*Tablo Sorting End*/
+    .nav-item{
+        border:1px solid #d0d0d0;
+    }
+    .nav-item:hover{
+            border: 1px solid #000;
+    }
+</style>
+
+<script>
+    var SorgulamaTuru = @ViewBag.SorgulamaTuru;
+    var sepetYetki = @Html.Raw(Json.Serialize(ViewBag.sepetYetki));
+</script>
+<!--Loading Div Start-->
+@*<div class="loaddiv" id="loaddiv">
+    <div class="load-black-back"></div>
+    <div id="loading-wrapper">
+        <div id="loading-text">LOADING</div>
+        <div id="loading-content"></div>
+    </div>
+</div>*@
+<!--Loading Div End-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--Oto Robot Start-->
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-light">
+    <div class="container">
+        <a class="navbar-brand" asp-controller="Home" asp-action="Index">@ViewBag.Unvani</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-5">
+                <li class="nav-item mx-3 px-1 my-1 my-lg-0">
+                    <a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="Index"><strong>Anasayfa</strong></a>
+                </li>
+                @{
+                    //Log sayfası
+                    if (@ViewBag.Admin == "AdminOnly")
+                    {
+                        <li class="nav-item mx-3 px-1 my-1 my-lg-0">
+                            <a class="nav-link" asp-controller="Home" asp-action="LogIndex"><strong>Log Raporu</strong></a>
+                        </li>
+                        <li class="nav-item mx-3 px-1 my-1 my-lg-0">
+                            <a target="_blank" class="nav-link" href="https://otorobotadmin.azurewebsites.net/TVM/TVM"><strong>Yönetim Paneli</strong></a>
+                        </li>
+                    }
+                    else if (@ViewBag.Admin == "SuperAdmin")
+                    {
+                        <li class="nav-item mx-3 px-1 my-1 my-lg-0">
+                            <a class="nav-link" asp-controller="Home" asp-action="AdminLogIndex"><strong>Log Raporu</strong></a>
+                        </li>
+                        <li class="nav-item mx-3 px-1 my-1 my-lg-0">
+                            <a target="_blank" class="nav-link" href="https://otorobotadmin.azurewebsites.net/TVM/TVM"><strong>Yönetim Paneli</strong></a>
+                        </li>
+                    }
+                    if (@ViewBag.TopluSorgu)
+                    {
+                        <li class="nav-item mx-3 px-1 my-1 my-lg-0">
+                            <a class="nav-link" asp-controller="Home" asp-action="IndexExcel"><strong>Toplu Sorgu</strong></a>
+                        </li>
+                    }
+                }
+            </ul>
+            <button type="button" style="font-weight:bold;" class="btn btn-primary" id="btn_logout">Çıkış Yap</button>
+        </div>
+    </div>
+</nav>
+<!-- Navbar End -->
+
+
+<div class="container mt-5">
+    <!--Logo Start-->
+    <div class="row text-center mb-2">
+        <div class="ps-3 col-6 col-md-4 col-lg-3">
+            <img class="w-100" src="~/assets/images/otorobotlogo.png" />
+        </div>
+    </div>
+    <!--Logo End-->
+    <!--Card Form End-->
+    <div class="card">
+        <h5 class="card-header bg-orange py-4">Oto Parça Sorgu Bilgileri</h5>
+        <div class="card-body">
+            <!--Form Parca Start-->
+            <div class="row g-3 px-md-3">
+                <div class="col-md-12">
+                    <label for="inputoem" class="form-label h3">OEM No-Marka Model Adı</label>
+                    <input type="text" class="form-control mx-auto" id="inputoem">
+                </div>
+                <div class="col-md-12 d-flex justify-content-between">
+                    <!--Check Box Start-->
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Stokta Olanlar
+                        </label>
+                    </div>
+                    <!--Check Box End-->
+                    <!--Submit Button Start-->
+                    <button type="submit" id="btn_sorgula" class="btn btn-orange">Sorgula</button>
+
+                    <!--Submit Button End-->
+                </div>
+            </div>
+            <!--Form Parca End-->
+        </div>
+    </div>
+    <!--Card Form End-->
+    <br />
+    <!--Sorgu detay Start-->
+    <div id="sorguDetay" class="d-none">
+        <!--Sorgu Detay Start-->
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="background: rgba(22, 100, 22, .7);">
+                        Sorgulama Tamamlandı.
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                     data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+
+                        @*<div class="alert alert-success" id="div_success_alert">
+                        <strong>Sorgulama Tamamlandı.</strong>
+                        </div>*@
+
+                        <div class="row" id="SorguDetayRow">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Sorgu Detay End-->
+    </div>
+    <!--Sorgu detay End-->
+    <br />
+    <!--Card Table Start-->
+    <div class="card">
+        <h5 class="card-header bg-dark-blue py-4">Ürün Listesi</h5>
+        <div class="card-body" style="overflow-x: auto;">
+            <!--Table Parca Start-->
+            <table class="table table-striped" style="width:100%" id="table_offer">
+                <thead class="bg-light-blue text-white">
+                    <tr>
+                        <th scope="col">Tedarikçi Adı</th>
+                        <th scope="col">Stok</th>
+                        <th scope="col">Stok No</th>
+                        <th scope="col">OEM No</th>
+                        <th scope="col">Ürün Adı</th>
+                        <th scope="col">Marka</th>
+                        <th scope="col">Kdv'siz Fiyat</th>
+                        <th scope="col">Kdv'li Fiyat</th>
+                        <th scope="col">Liste Fiyatı</th>
+                        <th scope="col">Fiyatlar</th>
+                        @*<th scope="col" class="text-end">Liste Tarihi</th>*@
+                    </tr>
+                </thead>
+                <tbody id="sorguParcaList">
+                </tbody>
+            </table>
+            <!--Table Parca End-->
+        </div>
+    </div>
+    <!--Card Table End-->
+    <br />
+    <!--Card img Start-->
+    <div class="card">
+        <h5 class="card-header bg-dark-blue py-4">Ürün Listesi Resim</h5>
+        <div class="card-body" style="overflow-x: auto;">
+            <!--Resim Parca Start-->
+            <div id="div_img">
+            </div>
+            <!--Resim Parca End-->
+        </div>
+    </div>
+    <!--Card img End-->
+</div>
+
+<!--Baglanılan Sirketler Start-->
+<div class="fixed-bottom" style="max-width: 300px; border:1px solid #aaa;z-index:2;">
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne">
+                    Tedarikçi Şirketler <span id="span_sirket_sayisi">()</span> - <span id="span_kapali_sirket_sayisi">()</span>
+                </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne"
+                 data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body" style="max-height:50vh;overflow-y:auto;">
+                    <label style="font-weight: bold; color:red;">Oturum Sonlanmış Tedarikçiler</label>
+                    <table class="table table-striped" id="table_company">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Adı</th>
+                                <th scope="col">Tel.No</th>
+                            </tr>
+                        </thead>
+                        <tbody id="panelClosedSirket">
+                        </tbody>
+
+                    </table>
+                    <table class="table table-striped" id="table_company">
+                        <thead>
+                            <tr>
+                                @{
+                                    if (ViewBag.SorgulamaTuru != 0)
+                                    {
+                                        <th scope="col">Teklif Al</th>
+                                    }
+                                }
+                                <th scope="col">Adı</th>
+                                <th scope="col">Tel.No</th>
+                            </tr>
+                        </thead>
+                        <tbody id="panelLoginSirket">
+                            <tr id="tr_loading">
+                                <td colspan="3">Yükleniyor...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Baglanılan Sirketler End-->
+<!--Validation Kontrol Start-->
+<div style="position:fixed;bottom:20px;right:20px;max-width: 400px;" id="liveAlertPlaceholder">
+</div>
+<!--Validation Kontrol End-->
+<!--Oto Robot End-->

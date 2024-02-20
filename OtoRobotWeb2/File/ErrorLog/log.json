@@ -1,0 +1,329 @@
+Index and length must refer to a location within the string. (Parameter 'length')    at System.String.Substring(Int32 startIndex, Int32 length)
+   at OfferAutomation.API.Helpers.PDFHelper.createOfferPdf(PdfResponse pdfResponse) in C:\Users\MesutCalik\Desktop\Ofis\robot_app\OfferAutomation.API\Helpers\PDFHelper.cs:line 189
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\MesutCalik\Desktop\Ofis\robot_app\OfferAutomation.API\Controllers\PolicyController.cs:line 85
+5.03.2022 19:20:39Index and length must refer to a location within the string. (Parameter 'length')    at System.String.Substring(Int32 startIndex, Int32 length)
+   at OfferAutomation.API.Helpers.PDFHelper.createOfferPdf(PdfResponse pdfResponse) in C:\Users\MesutCalik\Desktop\Ofis\robot_app\OfferAutomation.API\Helpers\PDFHelper.cs:line 189
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\MesutCalik\Desktop\Ofis\robot_app\OfferAutomation.API\Controllers\PolicyController.cs:line 85
+5.03.2022 19:22:15Index and length must refer to a location within the string. (Parameter 'length')    at System.String.Substring(Int32 startIndex, Int32 length)
+   at OfferAutomation.API.Helpers.PDFHelper.createOfferPdf(PdfResponse pdfResponse) in C:\Users\MesutCalik\Desktop\Ofis\robot_app\OfferAutomation.API\Helpers\PDFHelper.cs:line 189
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\MesutCalik\Desktop\Ofis\robot_app\OfferAutomation.API\Controllers\PolicyController.cs:line 85
+5.03.2022 19:23:51Object reference not set to an instance of an object.    at OfferAutomation.API.Helpers.PDFHelper.createOfferPdf(PdfResponse pdfResponse) in C:\Users\MesutCalik\Desktop\Ofis\robot_app\OfferAutomation.API\Helpers\PDFHelper.cs:line 189
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\MesutCalik\Desktop\Ofis\robot_app\OfferAutomation.API\Controllers\PolicyController.cs:line 88
+17.03.2022 17:45:24Object reference not set to an instance of an object.    at OfferAutomation.API.Helpers.PDFHelper.createOfferPdf(PdfResponse pdfResponse) in C:\Users\MesutCalik\Desktop\Ofis\robot_app\OfferAutomation.API\Helpers\PDFHelper.cs:line 189
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\MesutCalik\Desktop\Ofis\robot_app\OfferAutomation.API\Controllers\PolicyController.cs:line 88
+18.03.2022 09:46:51Index and length must refer to a location within the string. (Parameter 'length')    at System.String.Substring(Int32 startIndex, Int32 length)
+   at OfferAutomation.API.Helpers.PDFHelper.createOfferPdf(PdfResponse pdfResponse) in C:\Users\MesutCalik\Desktop\Ofis\robot_app\OfferAutomation.API\Helpers\PDFHelper.cs:line 189
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\MesutCalik\Desktop\Ofis\robot_app\OfferAutomation.API\Controllers\PolicyController.cs:line 88
+18.03.2022 11:58:43Object reference not set to an instance of an object.    at OfferAutomation.API.Helpers.PDFHelper.createOfferPdf(PdfResponse pdfResponse) in C:\Users\MesutCalik\Desktop\Ofis\robot_app\OfferAutomation.API\Helpers\PDFHelper.cs:line 189
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\MesutCalik\Desktop\Ofis\robot_app\OfferAutomation.API\Controllers\PolicyController.cs:line 88
+18.03.2022 12:05:38Object reference not set to an instance of an object.    at OfferAutomation.API.Helpers.PDFHelper.createOfferPdf(PdfResponse pdfResponse) in C:\Users\MesutCalik\Desktop\Ofis\robot_app\OfferAutomation.API\Helpers\PDFHelper.cs:line 189
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\MesutCalik\Desktop\Ofis\robot_app\OfferAutomation.API\Controllers\PolicyController.cs:line 88
+18.03.2022 12:08:05Object reference not set to an instance of an object.    at OfferAutomation.API.Controllers.PolicyController.AracData(GetKaskoOfferInput key) in C:\Users\MesutCalik\Desktop\Ofis\robot_app\OfferAutomation.API\Controllers\PolicyController.cs:line 134
+21.03.2022 18:08:36Index and length must refer to a location within the string. (Parameter 'length')    at System.String.Substring(Int32 startIndex, Int32 length)
+   at OfferAutomation.API.Helpers.PDFHelper.createOfferPdf(PdfResponse pdfResponse) in C:\Users\MesutCalik\Desktop\Ofis\robot_app\OfferAutomation.API\Helpers\PDFHelper.cs:line 189
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\MesutCalik\Desktop\Ofis\robot_app\OfferAutomation.API\Controllers\PolicyController.cs:line 88
+23.03.2022 12:00:45Index and length must refer to a location within the string. (Parameter 'length')    at System.String.Substring(Int32 startIndex, Int32 length)
+   at OfferAutomation.API.Helpers.PDFHelper.createOfferPdf(PdfResponse pdfResponse) in C:\Users\MesutCalik\Desktop\Ofis\robot_app\OfferAutomation.API\Helpers\PDFHelper.cs:line 189
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\MesutCalik\Desktop\Ofis\robot_app\OfferAutomation.API\Controllers\PolicyController.cs:line 88
+23.03.2022 16:08:57Object reference not set to an instance of an object.    at OfferAutomation.API.Controllers.PolicyController.AracData(GetKaskoOfferInput key) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 139
+20.6.2022 09:45:59Object reference not set to an instance of an object.    at OfferAutomation.API.Controllers.PolicyController.AracData(GetKaskoOfferInput key) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 139
+20.6.2022 09:46:19Object reference not set to an instance of an object.    at OfferAutomation.API.Controllers.PolicyController.AracData(GetKaskoOfferInput key) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 139
+21.6.2022 15:32:47Object reference not set to an instance of an object.    at OfferAutomation.API.Controllers.PolicyController.AracData(GetKaskoOfferInput key) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 139
+21.6.2022 15:37:43One or more errors occurred. (Could not find a part of the path 'C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\CefSharp\Cache_TVM_170\Dir\Cache'.)    at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OfferAutomation.API.Controllers.PolicyController.AracData(GetKaskoOfferInput key) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 152
+23.6.2022 10:53:46One or more errors occurred. (Could not find a part of the path 'C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\CefSharp\Cache_TVM_170\Dir\Cache'.)    at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OfferAutomation.API.Controllers.PolicyController.AracData(GetKaskoOfferInput key) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 152
+23.6.2022 10:55:50One or more errors occurred. (Could not find a part of the path 'C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\CefSharp\Cache_TVM_170\Dir\Cache'.)    at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OfferAutomation.API.Controllers.PolicyController.AracData(GetKaskoOfferInput key) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 152
+23.6.2022 10:55:59One or more errors occurred. (Could not find a part of the path 'C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\CefSharp\Cache_TVM_170\Dir\Cache'.)    at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OfferAutomation.API.Controllers.PolicyController.AracData(GetKaskoOfferInput key) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 152
+23.6.2022 10:56:18One or more errors occurred. (Could not find a part of the path 'C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\CefSharp\Cache_TVM_170\Dir\Cache'.)    at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OfferAutomation.API.Controllers.PolicyController.AracData(GetKaskoOfferInput key) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 152
+23.6.2022 10:56:21One or more errors occurred. (Could not find a part of the path 'C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\CefSharp\Cache_TVM_170\Dir\Cache'.)    at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OfferAutomation.API.Controllers.PolicyController.AracData(GetKaskoOfferInput key) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 152
+23.6.2022 10:56:22The SSL connection could not be established, see inner exception. Unable to read data from the transport connection: Varolan bir bağlantı uzaktaki bir ana bilgisayar tarafından zorla kapatıldı..    at System.Net.HttpWebRequest.GetResponse()
+   at iTextSharp.text.Image.GetInstance(Uri url, Boolean recoverFromImageError)
+   at iTextSharp.text.Image.GetInstance(Uri url)
+   at OfferAutomation.API.Helpers.PDFHelper.createOfferPdf(PdfResponse pdfResponse) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Helpers\PDFHelper.cs:line 88
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 89
+27.6.2022 14:23:47The SSL connection could not be established, see inner exception. Unable to read data from the transport connection: Varolan bir bağlantı uzaktaki bir ana bilgisayar tarafından zorla kapatıldı..    at System.Net.HttpWebRequest.GetResponse()
+   at iTextSharp.text.Image.GetInstance(Uri url, Boolean recoverFromImageError)
+   at iTextSharp.text.Image.GetInstance(Uri url)
+   at OfferAutomation.API.Helpers.PDFHelper.createOfferPdf(PdfResponse pdfResponse) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Helpers\PDFHelper.cs:line 88
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 89
+27.6.2022 14:32:05The SSL connection could not be established, see inner exception. Unable to read data from the transport connection: Varolan bir bağlantı uzaktaki bir ana bilgisayar tarafından zorla kapatıldı..    at System.Net.HttpWebRequest.GetResponse()
+   at iTextSharp.text.Image.GetInstance(Uri url, Boolean recoverFromImageError)
+   at iTextSharp.text.Image.GetInstance(Uri url)
+   at OfferAutomation.API.Helpers.PDFHelper.createOfferPdf(PdfResponse pdfResponse) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Helpers\PDFHelper.cs:line 88
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 89
+27.6.2022 14:32:11One or more errors occurred. (Could not find a part of the path 'C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\CefSharp\Cache_TVM_170\Dir\Cache'.)    at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OfferAutomation.API.Controllers.PolicyController.AracData(GetKaskoOfferInput key) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 152
+28.6.2022 10:43:20One or more errors occurred. (Could not find a part of the path 'C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\CefSharp\Cache_TVM_170\Dir\Cache'.)    at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OfferAutomation.API.Controllers.PolicyController.AracData(GetKaskoOfferInput key) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 152
+28.6.2022 16:56:17One or more errors occurred. (Could not find a part of the path 'C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\CefSharp\Cache_TVM_170\Dir\Cache'.)    at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OfferAutomation.API.Controllers.PolicyController.AracData(GetKaskoOfferInput key) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 152
+29.6.2022 11:45:25One or more errors occurred. (Could not find a part of the path 'C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\CefSharp\Cache_TVM_170\Dir\Cache'.)    at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OfferAutomation.API.Controllers.PolicyController.AracData(GetKaskoOfferInput key) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 152
+29.6.2022 12:23:39One or more errors occurred. (Could not find a part of the path 'C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\CefSharp\Cache_TVM_170\Dir\Cache'.)    at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OfferAutomation.API.Controllers.PolicyController.AracData(GetKaskoOfferInput key) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 152
+29.6.2022 12:26:55Index and length must refer to a location within the string. (Parameter 'length')    at System.String.Substring(Int32 startIndex, Int32 length)
+   at OfferAutomation.API.Helpers.PDFHelper.createOfferPdf(PdfResponse pdfResponse) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Helpers\PDFHelper.cs:line 189
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 89
+29.6.2022 15:03:46Index and length must refer to a location within the string. (Parameter 'length')    at System.String.Substring(Int32 startIndex, Int32 length)
+   at OfferAutomation.API.Helpers.PDFHelper.createOfferPdf(PdfResponse pdfResponse) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Helpers\PDFHelper.cs:line 189
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 89
+29.6.2022 15:06:25One or more errors occurred. (Could not find a part of the path 'C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\CefSharp\Cache_TVM_170\Dir\Cache'.)    at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OfferAutomation.API.Controllers.PolicyController.AracData(GetKaskoOfferInput key) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 152
+29.6.2022 16:10:38One or more errors occurred. (Could not find a part of the path 'C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\CefSharp\Cache_TVM_170\Dir\Cache'.)    at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OfferAutomation.API.Controllers.PolicyController.AracData(GetKaskoOfferInput key) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 152
+29.6.2022 16:15:20One or more errors occurred. (Could not find a part of the path 'C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\CefSharp\Cache_TVM_170\Dir\Cache'.)    at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OfferAutomation.API.Controllers.PolicyController.AracData(GetKaskoOfferInput key) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 152
+29.6.2022 18:20:37A transport-level error has occurred when receiving results from the server. (provider: Session Provider, error: 19 - Physical connection is not usable)    at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ThrowExceptionAndWarning(Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniError(TdsParserStateObject stateObj, UInt32 error)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniSyncOverAsync()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryReadNetworkPacket()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryPrepareBuffer()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryReadByte(Byte& value)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at OfferAutomation.API.Services.OfferService.OncekiTeklifler(KaskoOfferInput globalOfferResponse) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Services\OfferService.cs:line 605
+   at OfferAutomation.API.Controllers.PolicyController.OncekiTeklifler(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 110
+5.7.2022 13:37:31Nullable object must have a value.    at System.Nullable`1.get_Value()
+   at OfferAutomation.API.Services.OfferService.PdfData(GlobalOfferResponse globalOfferResponse) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Services\OfferService.cs:line 428
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 86
+6.7.2022 16:47:42Nullable object must have a value.    at System.Nullable`1.get_Value()
+   at OfferAutomation.API.Services.OfferService.PdfData(GlobalOfferResponse globalOfferResponse) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Services\OfferService.cs:line 428
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 86
+6.7.2022 16:48:53Nullable object must have a value.    at System.Nullable`1.get_Value()
+   at OfferAutomation.API.Services.OfferService.PdfData(GlobalOfferResponse globalOfferResponse) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Services\OfferService.cs:line 428
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 86
+6.7.2022 16:48:58Nullable object must have a value.    at System.Nullable`1.get_Value()
+   at OfferAutomation.API.Services.OfferService.PdfData(GlobalOfferResponse globalOfferResponse) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Services\OfferService.cs:line 428
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 86
+6.7.2022 23:06:19Nullable object must have a value.    at System.Nullable`1.get_Value()
+   at OfferAutomation.API.Services.OfferService.PdfData(GlobalOfferResponse globalOfferResponse) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Services\OfferService.cs:line 428
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 86
+6.7.2022 23:06:25One or more errors occurred. (Could not find a part of the path 'C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\CefSharp\Cache_TVM_170\Dir\Cache'.)    at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OfferAutomation.API.Controllers.PolicyController.AracData(GetKaskoOfferInput key) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 152
+7.7.2022 13:38:45One or more errors occurred. (Could not find a part of the path 'C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\CefSharp\Cache_TVM_170\Dir\Cache'.)    at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OfferAutomation.API.Controllers.PolicyController.AracData(GetKaskoOfferInput key) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 152
+7.7.2022 13:40:15One or more errors occurred. (Could not find a part of the path 'C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\CefSharp\Cache_TVM_170\Dir\Cache'.)    at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OfferAutomation.API.Controllers.PolicyController.AracData(GetKaskoOfferInput key) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 152
+7.7.2022 14:55:49Index and length must refer to a location within the string. (Parameter 'length')    at System.String.Substring(Int32 startIndex, Int32 length)
+   at OfferAutomation.API.Helpers.PDFHelper.createOfferPdf(PdfResponse pdfResponse) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Helpers\PDFHelper.cs:line 189
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 89
+20.7.2022 14:54:35Index and length must refer to a location within the string. (Parameter 'length')    at System.String.Substring(Int32 startIndex, Int32 length)
+   at OfferAutomation.API.Helpers.PDFHelper.createOfferPdf(PdfResponse pdfResponse) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Helpers\PDFHelper.cs:line 189
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 89
+20.7.2022 14:59:08An error occurred while sending the request. Unable to read data from the transport connection: Varolan bir bağlantı uzaktaki bir ana bilgisayar tarafından zorla kapatıldı..    at System.Net.HttpWebRequest.GetResponse()
+   at iTextSharp.text.pdf.codec.PngImage.GetImage(Uri url)
+   at iTextSharp.text.Image.GetInstance(Uri url, Boolean recoverFromImageError)
+   at iTextSharp.text.Image.GetInstance(Uri url)
+   at OfferAutomation.API.Helpers.PDFHelper.createOfferPdf(PdfResponse pdfResponse) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Helpers\PDFHelper.cs:line 88
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 89
+20.7.2022 15:11:28A transport-level error has occurred when receiving results from the server. (provider: Session Provider, error: 19 - Physical connection is not usable)    at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ThrowExceptionAndWarning(Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniError(TdsParserStateObject stateObj, UInt32 error)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniSyncOverAsync()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryReadNetworkPacket()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryPrepareBuffer()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryReadByte(Byte& value)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at OfferAutomation.API.Services.OfferService.OncekiTeklifler(KaskoOfferInput globalOfferResponse) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Services\OfferService.cs:line 605
+   at OfferAutomation.API.Controllers.PolicyController.OncekiTeklifler(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 110
+21.7.2022 09:24:23Index and length must refer to a location within the string. (Parameter 'length')    at System.String.Substring(Int32 startIndex, Int32 length)
+   at OfferAutomation.API.Helpers.PDFHelper.createOfferPdf(PdfResponse pdfResponse) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Helpers\PDFHelper.cs:line 189
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 89
+21.7.2022 10:46:51One or more errors occurred. (Could not find a part of the path 'C:\Users\ALKAN\Desktop\neorobot orj\neoRobotApp\OfferAutomation.API\CefSharp\Cache_TVM_170\Dir\Cache'.)    at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OfferAutomation.API.Controllers.PolicyController.AracData(GetKaskoOfferInput key) in C:\Users\ALKAN\Desktop\neorobot orj\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 152
+26.7.2022 10:28:25Index and length must refer to a location within the string. (Parameter 'length')    at System.String.Substring(Int32 startIndex, Int32 length)
+   at OfferAutomation.API.Helpers.PDFHelper.createOfferPdf(PdfResponse pdfResponse) in C:\Users\ALKAN\Desktop\neorobot orj\neoRobotApp\OfferAutomation.API\Helpers\PDFHelper.cs:line 189
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\neorobot orj\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 89
+27.7.2022 11:13:40Index and length must refer to a location within the string. (Parameter 'length')    at System.String.Substring(Int32 startIndex, Int32 length)
+   at OfferAutomation.API.Helpers.PDFHelper.createOfferPdf(PdfResponse pdfResponse) in C:\Users\ALKAN\Desktop\neorobot orj\neoRobotApp\OfferAutomation.API\Helpers\PDFHelper.cs:line 189
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\neorobot orj\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 89
+3.8.2022 13:22:41Index and length must refer to a location within the string. (Parameter 'length')    at System.String.Substring(Int32 startIndex, Int32 length)
+   at OfferAutomation.API.Helpers.PDFHelper.createOfferPdf(PdfResponse pdfResponse) in C:\Users\ALKAN\Desktop\neorobot orj\neoRobotApp\OfferAutomation.API\Helpers\PDFHelper.cs:line 189
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\neorobot orj\neoRobotApp\OfferAutomation.API\Controllers\PolicyController.cs:line 89
+3.8.2022 13:23:55v2login 
+One or more errors occurred. (Could not find a part of the path 'C:\Users\MEHMETYILDIZ\Desktop\neoRobotApp\OfferAutomation.API\wwwroot\Scripts\AKSIGORTA\Login\Login2.js'.)    at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.Wait()
+   at OfferAutomation.API.Controllers.GunesController.v2Login(KaskoOfferInput key) in C:\Users\MEHMETYILDIZ\Desktop\neoRobotApp\OfferAutomation.API\Controllers\GunesController.cs:line 1525
+9/23/2022 8:25:23 PMv2login 
+One or more errors occurred. (Could not find a part of the path 'C:\Users\MEHMETYILDIZ\Desktop\neoRobotApp\OfferAutomation.API\wwwroot\Scripts\AKSIGORTA\Login\Login2.js'.)    at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.Wait()
+   at OfferAutomation.API.Controllers.GunesController.v2Login(KaskoOfferInput key) in C:\Users\MEHMETYILDIZ\Desktop\neoRobotApp\OfferAutomation.API\Controllers\GunesController.cs:line 1525
+9/23/2022 8:29:50 PMv2login 
+One or more errors occurred. (Could not find a part of the path 'C:\Users\MEHMETYILDIZ\Desktop\neoRobotApp\OfferAutomation.API\wwwroot\Scripts\AKSIGORTA\Login\Login2.js'.)    at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.Wait()
+   at OfferAutomation.API.Controllers.GunesController.v2Login(KaskoOfferInput key) in C:\Users\MEHMETYILDIZ\Desktop\neoRobotApp\OfferAutomation.API\Controllers\GunesController.cs:line 1525
+9/23/2022 8:31:35 PMIndex and length must refer to a location within the string. (Parameter 'length')    at System.String.Substring(Int32 startIndex, Int32 length)
+   at OfferAutomation.API.Helpers.PDFHelper.createOfferPdf(PdfResponse pdfResponse) in C:\Users\MesutCalik\Desktop\Ofis\RobotV3Web\OfferAutomation.API\Helpers\PDFHelper.cs:line 187
+   at OfferAutomation.API.Controllers.PolicyController.downloadPdf(GetKaskoOfferInput input) in C:\Users\MesutCalik\Desktop\Ofis\RobotV3Web\OfferAutomation.API\Controllers\PolicyController.cs:line 50
+17.10.2022 15:16:38Index and length must refer to a location within the string. (Parameter 'length')    at System.String.Substring(Int32 startIndex, Int32 length)
+   at OfferAutomation.API.Helpers.PDFHelper.createOfferPdf(PdfResponse pdfResponse) in C:\Users\MesutCalik\Desktop\Ofis\RobotV3Web\OfferAutomation.API\Helpers\PDFHelper.cs:line 187
+   at OfferAutomation.API.Controllers.PolicyController.downloadPdf(GetKaskoOfferInput input) in C:\Users\MesutCalik\Desktop\Ofis\RobotV3Web\OfferAutomation.API\Controllers\PolicyController.cs:line 50
+17.10.2022 15:19:28An exception has been raised that is likely due to a transient failure. Consider enabling transient error resiliency by adding 'EnableRetryOnFailure()' to the 'UseSqlServer' call.    at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at OfferAutomation.API.Services.OfferService.OncekiTeklifler(KaskoOfferInput globalOfferResponse) in C:\Users\ALKAN\Desktop\V3Robot\RobotV3Web\OfferAutomation.API\Services\OfferService.cs:line 375
+   at OfferAutomation.API.Controllers.PolicyController.OncekiTeklifler(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\V3Robot\RobotV3Web\OfferAutomation.API\Controllers\PolicyController.cs:line 102
+20.10.2022 20:04:23An exception has been raised that is likely due to a transient failure. Consider enabling transient error resiliency by adding 'EnableRetryOnFailure()' to the 'UseSqlServer' call.    at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at OfferAutomation.API.Services.OfferService.PdfData(GlobalOfferResponse globalOfferResponse) in C:\Users\ALKAN\Desktop\V3Robot\RobotV3Web\OfferAutomation.API\Services\OfferService.cs:line 119
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\V3Robot\RobotV3Web\OfferAutomation.API\Controllers\PolicyController.cs:line 102
+1.11.2022 13:02:03The specified blob does not exist.    at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.ExecuteAsyncInternal[T](RESTCommand`1 cmd, IRetryPolicy policy, OperationContext operationContext, CancellationToken token)
+   at OfferAutomation.API.Services.StorageService.DeleteFileToBlobAsync(String strFileName) in C:\Users\MesutCalik\Desktop\RobotV3Web\OfferAutomation.API\Services\StorageService.cs:line 104
+2.11.2022 13:08:00Buffer cannot be null. (Parameter 'buffer')    at System.IO.MemoryStream..ctor(Byte[] buffer, Boolean writable)
+   at System.IO.MemoryStream..ctor(Byte[] buffer)
+   at OfferAutomation.API.Controllers.PolicyController.downloadPdf(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\V3Robot\RobotV3Web\OfferAutomation.API\Controllers\PolicyController.cs:line 51
+16.11.2022 13:55:46A transport-level error has occurred when receiving results from the server. (provider: Session Provider, error: 19 - Physical connection is not usable)    at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ThrowExceptionAndWarning(Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniError(TdsParserStateObject stateObj, UInt32 error)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniSyncOverAsync()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryReadNetworkPacket()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryPrepareBuffer()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryReadByte(Byte& value)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at OfferAutomation.API.Services.OfferService.PdfData(GlobalOfferResponse globalOfferResponse) in C:\Users\ALKAN\Desktop\V3Robot\RobotV3Web\OfferAutomation.API\Services\OfferService.cs:line 140
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\V3Robot\RobotV3Web\OfferAutomation.API\Controllers\PolicyController.cs:line 102
+17.11.2022 15:46:52An exception has been raised that is likely due to a transient failure. Consider enabling transient error resiliency by adding 'EnableRetryOnFailure()' to the 'UseSqlServer' call.    at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at OfferAutomation.API.Services.OfferService.PdfData(GlobalOfferResponse globalOfferResponse) in C:\Users\ALKAN\Desktop\V3Robot\RobotV3Web\OfferAutomation.API\Services\OfferService.cs:line 140
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\V3Robot\RobotV3Web\OfferAutomation.API\Controllers\PolicyController.cs:line 102
+17.11.2022 15:47:44An exception has been raised that is likely due to a transient failure. Consider enabling transient error resiliency by adding 'EnableRetryOnFailure()' to the 'UseSqlServer' call.    at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at OfferAutomation.API.Services.OfferService.PdfData(GlobalOfferResponse globalOfferResponse) in C:\Users\ALKAN\Desktop\V3Robot\RobotV3Web\OfferAutomation.API\Services\OfferService.cs:line 140
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\V3Robot\RobotV3Web\OfferAutomation.API\Controllers\PolicyController.cs:line 102
+17.11.2022 15:47:44A transport-level error has occurred when receiving results from the server. (provider: Session Provider, error: 19 - Physical connection is not usable)    at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ThrowExceptionAndWarning(Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniError(TdsParserStateObject stateObj, UInt32 error)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniSyncOverAsync()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryReadNetworkPacket()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryPrepareBuffer()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryReadByte(Byte& value)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at OfferAutomation.API.Services.OfferService.PdfData(GlobalOfferResponse globalOfferResponse) in C:\Users\ALKAN\Desktop\V3Robot\RobotV3Web\OfferAutomation.API\Services\OfferService.cs:line 141
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\V3Robot\RobotV3Web\OfferAutomation.API\Controllers\PolicyController.cs:line 102
+18.11.2022 15:45:16An error occurred while sending the request. Unable to read data from the transport connection: Varolan bir bağlantı uzaktaki bir ana bilgisayar tarafından zorla kapatıldı..    at System.Net.HttpWebRequest.GetResponse()
+   at iTextSharp.text.Image.GetInstance(Uri url, Boolean recoverFromImageError)
+   at iTextSharp.text.Image.GetInstance(Uri url)
+   at OfferAutomation.API.Helpers.PDFHelper.createOfferPdf(PdfResponse pdfResponse) in C:\Users\ALKAN\Desktop\V3Robot\RobotV3Web\OfferAutomation.API\Helpers\PDFHelper.cs:line 85
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\V3Robot\RobotV3Web\OfferAutomation.API\Controllers\PolicyController.cs:line 105
+23.11.2022 10:51:26An exception has been raised that is likely due to a transient failure. Consider enabling transient error resiliency by adding 'EnableRetryOnFailure()' to the 'UseSqlServer' call.    at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   at lambda_method(Closure , QueryContext )
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.Execute[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.Execute[TResult](Expression expression)
+   at System.Linq.Queryable.FirstOrDefault[TSource](IQueryable`1 source)
+   at OfferAutomation.API.Services.OfferService.TVMDetaybyTvmKodu(Int32 tvmkodu) in C:\Users\ALKAN\Desktop\V3Robot\RobotV3Web\OfferAutomation.API\Services\OfferService.cs:line 53
+   at OfferAutomation.API.Helpers.PDFHelper.createOfferPdf(PdfResponse pdfResponse) in C:\Users\ALKAN\Desktop\V3Robot\RobotV3Web\OfferAutomation.API\Helpers\PDFHelper.cs:line 78
+   at OfferAutomation.API.Controllers.PolicyController.PdfIslem(GetKaskoOfferInput input) in C:\Users\ALKAN\Desktop\V3Robot\RobotV3Web\OfferAutomation.API\Controllers\PolicyController.cs:line 105
+23.11.2022 16:28:35
