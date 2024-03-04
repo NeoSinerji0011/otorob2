@@ -17,11 +17,11 @@ namespace  OtoRobotWeb2.Models
         {
             //İSTANBUL BİLGİSAYAR DATABASE BAĞLANTI KODLARI 
 
-            //optionsBuilder.UseSqlServer(@"Server = tcp: 213.254.135.175; Initial Catalog = NSEdirneTest2; Persist Security Info = False; User ID = NeosinerjiDBManager@neoonline; Password = NeoSnrj2017); MultipleActiveResultSets = True;Encrypt = True; TrustServerCertificate = True; Connection Timeout = 400;");
+            optionsBuilder.UseSqlServer(@"Server = tcp: 213.254.135.175; Initial Catalog = NSEdirneTest2; Persist Security Info = False; User ID = NeosinerjiDBManager@neoonline; Password = NeoSnrj2017); MultipleActiveResultSets = True;Encrypt = True; TrustServerCertificate = True; Connection Timeout = 400;");
 
             //EDİRNE SERVER DATABASE BAĞLANTI KODLARI 
 
-            optionsBuilder.UseSqlServer(@"Server = tcp: 159.146.11.107; Initial Catalog = NSEdirneTest2; Persist Security Info = False; User ID = NeosinerjiDBManager@neoonline; Password = NeoSnrj2017); MultipleActiveResultSets = True;Encrypt = True; TrustServerCertificate = True; Connection Timeout = 400;");
+            //optionsBuilder.UseSqlServer(@"Server = tcp: 159.146.11.107; Initial Catalog = NSEdirneTest2; Persist Security Info = False; User ID = NeosinerjiDBManager@neoonline; Password = NeoSnrj2017); MultipleActiveResultSets = True;Encrypt = True; TrustServerCertificate = True; Connection Timeout = 400;");
 
         }
         public DataContext(DbContextOptions<DataContext> options) : base(options)
