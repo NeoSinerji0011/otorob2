@@ -993,7 +993,9 @@ function UruneGit(sirketKodu, oemnumarasi) {
             result = `<input type="button" onclick="copy('${oemnumarasi}','https://b4b.cansunoto.com/Search/Index'); " ` + urunGitButton() + `  />`
             break;
 
-
+        case 121:
+            result = `<input type="button" onclick="copy('${oemnumarasi}','http://program.akkaya.com.tr/web/b2b/search');" ` + urunGitButton() + ` />`
+            break;
 
         default:
     }
