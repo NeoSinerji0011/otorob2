@@ -45,7 +45,7 @@ namespace OtoRobotWeb2.Controllers
         }
         [HttpGet("checklogin")]
         public IActionResult CheckLogin()
-        {
+       {
             SocketResponse socketResponse = new SocketResponse();
             socketResponse.setProcessType(enum_Process.LoginResult);
             socketResponse.UserId = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type.Contains("sid")).Value);
@@ -85,25 +85,9 @@ namespace OtoRobotWeb2.Controllers
             return Ok(true);
         }
 
+         
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+         
 
 
 

@@ -997,6 +997,13 @@ function UruneGit(sirketKodu, oemnumarasi) {
             result = `<input type="button" onclick="copy('${oemnumarasi}','http://program.akkaya.com.tr/web/b2b/search');" ` + urunGitButton() + ` />`
             break;
 
+        case 122:
+            result = `<input type="button" onclick="copy('${oemnumarasi}','http://program.bursanurpar.com.tr/web/b2b/search');" ` + urunGitButton() + ` />`
+            break;
+        case 125:
+            result = `<input type="button" onclick="copy('${oemnumarasi}','http://program.somotomotiv.com.tr/web/b2b/search');" ` + urunGitButton() + ` />`
+            break;
+
         default:
     }
     var template = '<div style="float: left;">'
