@@ -36,7 +36,7 @@ namespace OtoRobotWeb2.Controllers
         public RequestController(OfferService offerService)
         {
             _offerService = offerService;
-        }
+        } 
         #region login process
         [HttpGet("sendlogin")]
         public IActionResult SendLogin()
