@@ -29,8 +29,8 @@ namespace OtoRobotWeb2.Controllers
         private readonly AppSettings _appSettings;
         int userid = 0;  
         //önemli olan yerler 
-        public static bool localdsocketprocescalistir = false;//local calısmak icin true, canlıya alırken false yapılmalı!!!!sorguyu socketprcess projesine gonderme
-        public static bool localdconncalistir = false   ;//local calısmak icin true, canlıya alırken false yapılmalı!!!! sorguyu conn projesine gonderme
+        public static bool localdsocketprocescalistir = true;//local calısmak icin true, canlıya alırken false yapılmalı!!!!sorguyu socketprcess projesine gonderme
+        public static bool localdconncalistir = true   ;//local calısmak icin true, canlıya alırken false yapılmalı!!!! sorguyu conn projesine gonderme
         public static List<ResponseItem> yanitVarMi1List = new List<ResponseItem>(); // Sonuc bulunamayan listesi
         public static List<ResponseItem> yanitVarMi2List = new List<ResponseItem>(); // Sonuc bulunamayan listesi
         public RequestController(OfferService offerService)
@@ -99,7 +99,7 @@ namespace OtoRobotWeb2.Controllers
         [HttpGet("checkoffer")]
         [AllowAnonymous]
         public IActionResult CheckOffer([FromQuery] RequestInput key)
-        {
+            {
             SocketResponse socketResponse = new SocketResponse();
             socketResponse.setProcessType(enum_Process.OfferResult);
             socketResponse.UserId = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type.Contains("sid")).Value);

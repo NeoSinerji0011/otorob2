@@ -412,6 +412,8 @@ function OtoParcaView(data) {
         var sorguSonucDetay = "";
         var sorguOturumDetay = "";
         data.offerResult.forEach((item) => {
+
+            console.log(item)
             if (item.sirketAd == "ÖZÇETE" || item.sirketAd == "DEGA") {
                 if (document.getElementById("h4_" + item.sirketAd.toLowerCase()) == null) {
                     var h4 = document.createElement("h4");
@@ -660,10 +662,10 @@ function stringIsOrEmpty(deger, sirketkod = 0) {
     if (sirketkod == 27 || sirketkod == 32) {
         return MartasProductDeCrypt(deger);
     }
-    else if (sirketkod == 80) {
+    //else if (sirketkod == 80) {
 
-        return RotasProductDeCrypt(deger)
-    }
+    //    return RotasProductDeCrypt(deger)
+    //}
     else if (sirketkod == 14) {
         return OzasProductDeCrypt(deger)
     }
@@ -1128,14 +1130,14 @@ const I = be => {
         return b
     }
 
-function RotasProductDeCrypt(be) {
+//function RotasProductDeCrypt(be) {
 
-    const M = btoa("7480a729-6468-4957-97c9-3b96adc0aeff");
-    var qwe = decodeURIComponent(atob(be.replace(M, "")));
+//    const M = btoa("7480a729-6468-4957-97c9-3b96adc0aeff");
+//    var qwe = decodeURIComponent(atob(be.replace(M, "")));
 
-    return qwe
+//    return qwe
 
-}
+//}
 
 
 function KayaparProductDeCrypt(ge) {
@@ -1206,7 +1208,7 @@ function SepeteEkleEvent() {
 }
 
 function SepeteEkleButton(oem, stokno, kod) {
-    var aktifTedarikci = [1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19, 20, 23, 24, 30, 31, 33, 34, 36, 39, 40, 42, 43, 44, 47, 48, 50, 53, 54, 55, 56, 57, 58,/* 59,*/ 60, 61, 62, 63, 64, 66, 67, 68, 69, 71, 72, 73, 74, 75, 76, 78, 79, 81, 82, 84, 85, 86, 88, 90, 91, 92, 93, 94, 95, 96, 102, 103, 104, 105]
+    var aktifTedarikci = [1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19, 20, 23, 24, 30, 31, 33, 34, 36, 39, 40, 42, 43, 44, 47, 48, 50, 53, 54, 55, 56, 57, 58,/* 59,*/ 60, 61, 62, 63, 64, 66, 67, 68, 69, 71, 72, 73, 74, 75, 76, 78, 79, 80,81, 82, 84, 85, 86, 88, 90, 91, 92, 93, 94, 95, 96, 102, 103, 104, 105]
     if (!aktifTedarikci.includes(kod)) return "";
     if (oem != null)
         if (oem.trim() == "")
