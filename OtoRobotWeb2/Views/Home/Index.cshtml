@@ -213,25 +213,25 @@
                     <a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="Index"><strong>Anasayfa</strong></a>
                 </li>
                 @{
-                    Log sayfası
+                    //Log sayfası
                     if (@ViewBag.Admin == "AdminOnly")
                     {
                         <li class="nav-item mx-3 px-1 my-1 my-lg-0">
                             <a class="nav-link" asp-controller="Home" asp-action="LogIndex"><strong>Log Raporu</strong></a>
                         </li>
-                        <li class="nav-item mx-3 px-1 my-1 my-lg-0">
-                            <a target="_blank" class="nav-link" href="https://otorobotadmin.azurewebsites.net/TVM/TVM"><strong>Yönetim Paneli</strong></a>
-                        </li>
+                        //<li class="nav-item mx-3 px-1 my-1 my-lg-0">
+                        //    <a target="_blank" class="nav-link" href="https://otorobotadmin.azurewebsites.net/TVM/TVM"><strong>Yönetim Paneli</strong></a>
+                        //</li>
                     }
-                    //else if (@ViewBag.Admin == "SuperAdmin")
-                    //{
-                    //    <li class="nav-item mx-3 px-1 my-1 my-lg-0">
-                    //        <a class="nav-link" asp-controller="Home" asp-action="AdminLogIndex"><strong>Log Raporu</strong></a>
-                    //    </li>
-                    //    <li class="nav-item mx-3 px-1 my-1 my-lg-0">
-                    //        <a target="_blank" class="nav-link" href="https://otorobotadmin.azurewebsites.net/TVM/TVM"><strong>Yönetim Paneli</strong></a>
-                    //    </li>
-                    //}
+                    else if (@ViewBag.Admin == "SuperAdmin")
+                    {
+                        <li class="nav-item mx-3 px-1 my-1 my-lg-0">
+                            <a class="nav-link" asp-controller="Home" asp-action="AdminLogIndex"><strong>Log Raporu</strong></a>
+                        </li>
+                        //<li class="nav-item mx-3 px-1 my-1 my-lg-0">
+                        //    <a target="_blank" class="nav-link" href="https://otorobotadmin.azurewebsites.net/TVM/TVM"><strong>Yönetim Paneli</strong></a>
+                        //</li>
+                    }
                     if (@ViewBag.TopluSorgu)
                     {
                         <li class="nav-item mx-3 px-1 my-1 my-lg-0">
