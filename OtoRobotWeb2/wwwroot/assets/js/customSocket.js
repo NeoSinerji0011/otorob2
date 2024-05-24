@@ -659,9 +659,9 @@ function stringIsOrEmpty(deger, sirketkod = 0) {
     if (deger == null) {
         return "";
     }
-    if (sirketkod == 27 || sirketkod == 32) {
-        return MartasProductDeCrypt(deger);
-    }
+    //if (sirketkod == 27 || sirketkod == 32) {
+    //    return MartasProductDeCrypt(deger);
+    //}
     //else if (sirketkod == 80) {
 
     //    return RotasProductDeCrypt(deger)
