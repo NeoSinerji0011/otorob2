@@ -253,7 +253,7 @@ function ListQueryStringFlexCheckDefault() {
     }
 
     return result;
-}
+}//5G1941006E
 
 function fnk_CheckOfferSorguSocket(guid) {
     let sData = document.getElementById("inputoem").value;
