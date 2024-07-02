@@ -26,7 +26,7 @@ namespace OtoRobotWeb2.Controllers
     public class RequestController : ControllerBase
     {
         private OfferService _offerService;     
-        private readonly AppSettings _appSettings;  //asdad  sdsd 
+        private readonly AppSettings _appSettings;  //asdad 
         int userid = 0;  
         //önemli olan yerler 
         public static bool localdsocketprocescalistir = false;//local calısmak icin true, canlıya alırken false yapılmalı!!!!sorguyu socketprcess projesine gonderme
