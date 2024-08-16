@@ -46,7 +46,7 @@
         ],
         initComplete: function () {
             var api = this.api();
-
+          
             // For each column
             api
                 .columns()
@@ -57,6 +57,7 @@
                         $(api.column(colIdx).header()).index()
                     );
                     var title = $(cell).text();
+                    console.log(title)
                     $(cell).html('<input type="text" placeholder="' + title + '" />');
                     //if ($(api.column(colIdx).header()).index() >= 0) {
                     //    $(cell).html('<input type="text" placeholder="' + title + '"/>');

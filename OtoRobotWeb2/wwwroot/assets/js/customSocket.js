@@ -269,7 +269,7 @@ function fnk_CheckOfferSorguSocket(guid) {
                     buttonLoaderClose()
                     //loader kısmı icin burası 
                 }
-                //console.log(res);
+                console.log(res);
                 OtoParcaView(res);
 
                 //column arama ekleniyor
