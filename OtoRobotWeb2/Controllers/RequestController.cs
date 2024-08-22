@@ -40,7 +40,7 @@ namespace OtoRobotWeb2.Controllers
         #region login process
         [HttpGet("sendlogin")]
         public IActionResult SendLogin()
-        {
+        { 
             return Ok(true);
         }
         [HttpGet("checklogin")]
