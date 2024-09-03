@@ -72,6 +72,58 @@ namespace OtoRobotWeb2.Helpers
 
             ws.Cells[ws.Dimension.Address].AutoFitColumns();
 
+            // Başlık ekleme (para birimi sütunu için)
+            int sonSutunIndex = ws.Dimension.End.Column;
+           
+            ws.Cells[baslangicSatiri - 1, sonSutunIndex + 1].Value = "Para Birimi";
+
+            // Başlıkların biçimlendirilmesi (isteğe bağlı)
+            ws.Cells[baslangicSatiri - 1, sonSutunIndex, baslangicSatiri - 1, sonSutunIndex + 1].Style.Font.Bold = true;
+            ws.Cells[baslangicSatiri - 1, sonSutunIndex, baslangicSatiri - 1, sonSutunIndex + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+            // Verileri işlemeye başla
+            for (int row = baslangicSatiri; row <= ws.Dimension.End.Row; row++)
+            {
+                var cellValue = ws.Cells[row, sonSutunIndex].Text; // Son sütundaki hücre değeri
+                if (!string.IsNullOrEmpty(cellValue))
+                {
+                    string currencySymbol = ""; // Para birimi için geçici değişken
+                    int symbolIndex = -1; // İşaretin bulunma indeksi
+
+                    // USD işareti kontrolü
+                    if ((symbolIndex = cellValue.IndexOf("USD")) >= 0)
+                    {
+                        currencySymbol = "USD";
+                    }
+                    // EUR işareti kontrolü
+                    else if ((symbolIndex = cellValue.IndexOf("EUR")) >= 0)
+                    {
+                        currencySymbol = "EUR";
+                    }
+                    // EU işareti kontrolü
+                    else if ((symbolIndex = cellValue.IndexOf("EU")) >= 0)
+                    {
+                        currencySymbol = "EU";
+                    }
+
+                    // Eğer işaret bulunduysa
+                    if (symbolIndex >= 0)
+                    {
+                        // İşaretten önceki kısmı hücrede bırak
+                        ws.Cells[row, sonSutunIndex].Value = cellValue.Substring(0, symbolIndex).Trim();
+
+                        // İşareti yeni sütuna yaz
+                        ws.Cells[row, sonSutunIndex + 1].Value = currencySymbol;
+                    }
+                }
+            }
+
+            // Sütunları otomatik genişlet
+            ws.Cells[ws.Dimension.Address].AutoFitColumns();
+
+
+
+
             // STOKDA BULUNAMAYANLAR START
 
             ExcelWorksheet ws2 = pack.Workbook.Worksheets.Add("Stokda Bulunamayanlar");
