@@ -91,6 +91,18 @@ namespace OtoRobotWeb2.Helpers
                     int symbolIndex = -1; // İşaretin bulunma indeksi
 
                     // USD işareti kontrolü
+                    if ((symbolIndex = cellValue.IndexOf("$")) >= 0)
+                    {
+                        currencySymbol = "USD";
+                    }
+                    if ((symbolIndex = cellValue.IndexOf("₺")) >= 0)
+                    {
+                        currencySymbol = "TL";
+                    }
+                    if ((symbolIndex = cellValue.IndexOf("€")) >= 0)
+                    {
+                        currencySymbol = "EUR";
+                    }
                     if ((symbolIndex = cellValue.IndexOf("USD")) >= 0)
                     {
                         currencySymbol = "USD";
