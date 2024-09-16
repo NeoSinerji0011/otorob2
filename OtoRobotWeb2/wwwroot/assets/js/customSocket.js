@@ -1005,6 +1005,9 @@ function UruneGit(sirketKodu, oemnumarasi) {
         case 125:
             result = `<input type="button" onclick="copy('${oemnumarasi}','http://program.somotomotiv.com.tr/web/b2b/search');" ` + urunGitButton() + ` />`
             break;
+        case 140:
+            result = `<input type="button" onclick="copy('${oemnumarasi}','https://b2b.himkaotomotiv.com/web/b2b/search');" ` + urunGitButton() + ` />`
+            break;
 
         default:
     }
