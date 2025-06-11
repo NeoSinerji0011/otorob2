@@ -1,7 +1,7 @@
 ﻿@using OtoRobotWeb2.Models.Response
 @*@model IEnumerable<OtoRobotWeb2.Models.MongoDb.logTime>*@
-@model OtoLogResponse
-
+@model OtoLogResponse 
+ 
 @{
     ViewData["Title"] = "LogIndex";
 }
@@ -128,6 +128,16 @@
                                     <input class="form-check-input" type="radio" name="sorgu" id="multiozet" checked="@Model.rd_multiozet" value="sorguturu3">
                                     <label class="form-check-label" for="sorgu"> Toplu Oem Sorgu </label>
                                 </div>
+                                @{
+                                    if (Model.TvmKodu == 208)
+                                    {
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="sorgu" id="multiozetWeb" checked="@Model.rd_multiozetWeb" value="sorguturu4">
+                                            <label class="form-check-label" for="multiozetWeb"> Web Toplu Oem Sorgu </label>
+                                        </div>
+                                    }
+                                }
+
                             </div>
 
                         </div>
@@ -247,26 +257,32 @@
                                             <tr>
                                                 <td>
 
-                                                    <div class="row mb-3  font-weight-bold fs-5 bg-warning">
-                                                        <div class="col-4"> @Html.DisplayFor(modelItem => item.SorguMetni)</div>
-                                                        <div class="col-2"> @Html.DisplayFor(modelItem => item.TotalSorguBaslangicDisplay)</div>
-                                                        <div class="col-2"> @Html.DisplayFor(modelItem => item.TotalSorguBitisDisplay)</div>
+
+                                                    <div class="row mb-3 font-weight-bold fs-5 bg-warning">
+                                                        <div class="col-4">@item.SorguMetni</div>
+                                                        <div class="col-2">@item.TotalSorguBaslangicDisplay</div>
+                                                        <div class="col-2">@item.TotalSorguBitisDisplay</div>
                                                         <div class="col-2">
-                                                            @if (item.TotalSeconds > 60)
-                                                            {
-                                                                var a = Math.Round(item.TotalSeconds / 60);
-                                                                var b = Math.Round(item.TotalSeconds % 60);
-                                                                var c = a + "dk " + b + "sn".ToString();
-                                                                @Html.DisplayFor(modelItem =>c)
-                                                            }
-                                                            else
-                                                            {
-                                                                var a = Convert.ToInt64(Math.Round(item.TotalSeconds)) + "sn";
-                                                                @Html.DisplayFor(modelItem =>a)
+                                                            @{
+                                                                // TotalSeconds birimi milisaniye ise, saniyeye dönüştür:
+                                                                var totalSeconds = item.TotalSeconds / 1000;
+
+                                                                if (totalSeconds > 60)
+                                                                {
+                                                                    var dakika = Math.Floor(totalSeconds / 60); // Dakikayı hesapla
+                                                                    var saniye = Math.Floor(totalSeconds % 60); // Kalan saniyeyi hesapla
+                                                                    <text>@dakika dk @saniye sn</text>
+                                                                }
+                                                                else
+                                                                {
+                                                                    var saniye = Math.Round(totalSeconds); // Tam saniyeye yuvarla
+                                                                    <text>@saniye sn</text>
+                                                                }
                                                             }
                                                         </div>
-                                                        <div class="col-2"> @item.logTimeSirketler.Count</div>
+                                                        <div class="col-2">@item.logTimeSirketler.Count</div>
                                                     </div>
+
                                                     <div class="accordion" id="accordionExample">
                                                         <div class="accordion-item">
                                                             <h2 class="accordion-header" id="headingOne@(item.Id)">

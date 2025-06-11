@@ -412,8 +412,9 @@ function OtoParcaView(data) {
         var sorguSonucDetay = "";
         var sorguOturumDetay = "";
         data.offerResult.forEach((item) => {
-
-            console.log(item)
+          
+           
+           
             if (item.sirketAd == "ÖZÇETE" || item.sirketAd == "DEGA") {
                 if (document.getElementById("h4_" + item.sirketAd.toLowerCase()) == null) {
                     var h4 = document.createElement("h4");
@@ -459,20 +460,22 @@ function OtoParcaView(data) {
 
 
                     if ((kdvli == null || kdvli == "") && (kdvsiz != null || kdvsiz != "")) {
+                        if (!item.sirketKodu ==23) {
+                            var res = kdvsiz.replaceAll(".", "").replace(",", ".");
+                            kdvli = (parseFloat(res) * 1.20).toFixed(2).replaceAll(".", ",").trim();
 
-                        var res = kdvsiz.replaceAll(".", "").replace(",", ".");
-                        kdvli = (parseFloat(res) * 1.20).toFixed(2).replaceAll(".", ",").trim();
-
-                        if (kdvli == "NaN") kdvli = "";
+                            if (kdvli == "NaN") kdvli = "";
+                        }
+                        
 
                     }
                     if ((kdvli != null || kdvli != "") && (kdvsiz == null || kdvsiz == "")) {
+                        if (!item.sirketKodu == 23) {
+                            var res = kdvli.replaceAll(".", "").replace(",", ".");
+                            kdvsiz = (parseFloat(res) / 1.20).toFixed(2).replaceAll(".", ",").trim();
 
-                        var res = kdvli.replaceAll(".", "").replace(",", ".");
-                        kdvsiz = (parseFloat(res) / 1.20).toFixed(2).replaceAll(".", ",").trim();
-                      
-                        if (kdvsiz == "NaN") kdvsiz = "";
-
+                            if (kdvsiz == "NaN") kdvsiz = "";
+                        }
                     } 
                     tableDom.innerHTML += `
                                 <tr>
@@ -522,6 +525,8 @@ function OtoParcaView(data) {
                 }
 
             }
+            addDataToList(item)
+            //saveDataToDatabase(item)
 
         })
 
@@ -574,6 +579,7 @@ function OtoParcaView(data) {
         }
         SepeteEkleEvent();
         /*fnk_DataTable_Init();*/
+       
     }
     else {
         var template = "";
@@ -1161,6 +1167,133 @@ function WinkelProductDeCrypto(t) {
         return t
     }
 }
+
+let dataList = [];
+
+// Gelen veriyi listeye ekleyen bir fonksiyon
+let intervalStarted = false; // Interval'in başlatılıp başlatılmadığını kontrol etmek için bir değişken
+
+function addDataToList(data) {
+    try {
+        let sData = document.getElementById("inputoem").value;
+        data.SorgulananOemNo = sData; // sData'yı data içine ekliyoruz
+        dataList.push(data);
+
+        console.log("Veri listeye eklendi:", data);
+
+        // Interval yalnızca bir kez başlatılacak
+        if (!intervalStarted) {
+            intervalStarted = true; // Interval başlatıldığında flag'i true yap
+            setInterval(() => {
+                if (dataList.length > 0) {
+                    sendDataListToDatabase(); // Listeyi gönder
+                }
+            }, 10000); // 10 saniyede bir kontrol
+        }
+    } catch (error) {
+        console.error("Veri listeye eklenirken hata oluştu:", error);
+    }
+}
+
+async function sendDataListToDatabase() {
+    try {
+        if (dataList.length === 0) {
+            console.warn("Gönderilecek veri bulunamadı.");
+            return;
+        }
+
+        // Listeyi sunucuya gönder
+        const response = await fetch(`/api/request/SaveDataList`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(dataList) // Listeyi JSON formatında gönderiyoruz
+        });
+
+        if (!response.ok) {
+            console.error("Sunucudan hata döndü:", response.status);
+            return;
+        }
+
+        const res = await response.json();
+
+        if (res.isFinished) {
+            console.log("Veriler başarıyla kaydedildi:", res);
+
+            // Gönderim başarılıysa listeyi temizle
+            dataList = [];
+        } else {
+            console.warn("Veriler kaydedilemedi:", res);
+        }
+    } catch (error) {
+        console.error("Hata oluştu:", error);
+    }
+}
+
+async function saveDataToDatabase(data) {
+    try {
+        let sData = document.getElementById("inputoem").value;
+        data.SorgulananOemNo = sData; // sData'yı data içine ekliyoruz
+
+        const response = await fetch(`/api/request/SaveDataList`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data) // Tüm veriyi body'de gönderiyoruz
+        });
+
+        if (!response.ok) {
+           
+        }
+
+        const res = await response.json();
+        if (res.isFinished) {
+             
+        } else {
+           
+        }
+    } catch (error) {
+        console.error("Hata oluştu:", error);
+       
+    }
+}
+
+async function sendSdata(sdata) {
+    try {
+        // API'ye POST isteği gönderiliyor
+        const response = await fetch("/api/request/sData", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ sData: sdata }) // sData'yı nesne olarak gönderiyoruz
+        });
+
+        // Yanıt kontrolü
+        if (!response.ok) {
+            throw new Error("Sunucu hatası");
+        }
+
+        // Sunucu yanıtını json olarak al
+        const result = await response.json();
+
+        // Başarılı yanıt mesajı
+        if (result.success) {
+            console.log("Başarıyla gönderildi:", result);
+            MessageBox("Veri başarıyla kaydedildi.");
+        } else {
+            console.log("İşlem başarısız:", result);
+            MessageBox("Veri kaydedilemedi.");
+        }
+    } catch (error) {
+        console.error("Hata oluştu:", error);
+        MessageBox("Bir hata oluştu. Lütfen daha sonra tekrar deneyiniz.");
+    }
+}
+
+
 
 
 function SepeteEkleEvent() {

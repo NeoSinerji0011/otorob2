@@ -13,28 +13,26 @@ namespace OtoRobotWeb2.Helpers
         string url_test = "https://localhost:7006/";// localde test ederken conndaki url
         public async Task<SocketResponse> HttpGetCheckLogin(SocketResponse socketResponse, string url)
         {
-
             using var client = new HttpClient();
             if (RequestController.localdconncalistir)
                 url = url_test;
-            var tempres = client.GetStringAsync(url + "checklogin?UserId=" + socketResponse.UserId);
+
             try
             {
-                tempres.Wait();
-                var content = tempres.Result;
-                var res = JsonConvert.DeserializeObject<SocketResponse>(content);
-                if (res != null)
-                    return res;
-
+                var response = await client.GetStringAsync(url + "checklogin?UserId=" + socketResponse.UserId);
+                var res = JsonConvert.DeserializeObject<SocketResponse>(response);
+                return res ?? null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Console.WriteLine($"Hata oluştu: {ex.Message}");
+                return null;
             }
-            return null;
         }
+
         public async Task<SocketResponse> HttpGetSendOffer(SocketResponse socketResponse, string url)
         {
+            Console.WriteLine("urlll adresiii" +url);
             using var client = new HttpClient();
             if (RequestController.localdconncalistir)
                 url = url_test;

@@ -206,70 +206,68 @@
                 }
                 return _p8() + _p8(true) + _p8(true) + _p8();
             }
-            var grupid = CreateGuid()
+            var grupid = CreateGuid();
             var checkSocketProcess = false;
+
             $("#submit").click(function () {
-                grupid = CreateGuid();
+                grupid = CreateGuid(); // Yeni GUID oluştur
                 var fd = new FormData();
                 var files = $('#formFile')[0].files[0];
-                document.getElementById("complete").style.display = "none";
-                if (files == undefined) {
-                    alert("Dosya Seçiniz")
+
+                //   Dosya seçilmemişse uyarı ver ve işlemi durdur
+                if (!files) {
+                    alert("Dosya Seçiniz");
+                    return;
                 }
-                else {
-                    fd.append('formFile', files);
-                    fd.append('GrupID', grupid);
-                    var firmalar = ListQueryStringFlexCheckDefaultValue();
-                 
-                    if (firmalar.length > 0) {
-                        firmalar.forEach((data) => {
-                            fd.append('firmalar', parseInt(data));
 
-                        });
+                fd.append('formFile', files);
+                fd.append('GrupID', grupid);
 
-                        
-                        checkSocketProcess = false;
-                        
-                        $.ajax({
-                            url: 'IndexExcel',
-                            type: 'post',
-                            data: fd,
-                            contentType: false,
-                            processData: false,
-                            success: function (response) {
-                                if (response != "0") {
-                                    if(response<=50){
+                var firmalar = ListQueryStringFlexCheckDefaultValue();
 
-                                    
-                                        document.getElementById("hata").style.display = "none";
-                                        buttonopen();
-                                        document.getElementById("complete").style.display = "none";
-                                        document.getElementById("running").style.display = "block";
-                                        document.getElementById("complete2").style.display = "none";
-                                        document.getElementById("oemcount").innerText = response;
-                                        setTimeout(function () {
-                                        CheckMultiOffer();
-                                        }, 10000);
-                                    }
-                                    else{
-                                        document.getElementById("hata").style.display = "block";
-                                    }
-                                }
-                                else {
-                                    alert('Dosya yüklenemedi');
-                                }
-                            },
-                        });
-
-                    }
-
-                    else {
-                        alert("Açık şirket olmadığından dolayı sorgulama yapamazsınız.");
-                    }
-
-
+                //   Şirket listesi boşsa işlem yapılmamalı
+                if (firmalar.length === 0) {
+                    alert("Açık şirket olmadığından dolayı sorgulama yapamazsınız.");
+                    return;
                 }
+
+                //   Şirketleri ekle (parseInt yerine doğrudan ekleyebilirsin)
+                firmalar.forEach((data) => {
+                    fd.append('firmalar', data);
+                });
+
+                checkSocketProcess = false;
+
+                $.ajax({
+                    url: 'IndexExcel',
+                    type: 'post',
+                    data: fd,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        if (response !== "0") {
+                            if (response <= 50) {
+                                $("#hata").hide();
+                                buttonopen();
+                                $("#complete, #complete2").hide();
+                                $("#running").show();
+                                $("#oemcount").text(response);
+
+                                setTimeout(CheckMultiOffer, 10000);
+                            } else {
+                                $("#hata").show();
+                            }
+                        } else {
+                            alert('Dosya yüklenemedi');
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("AJAX Hatası:", error);
+                        alert("Bir hata oluştu, lütfen tekrar deneyin.");
+                    }
+                });
             });
+
             function CheckMultiOffer() {
                 var fileInput = document.getElementById('formFile');
                 var tarih = document.getElementById("input_tarih").value

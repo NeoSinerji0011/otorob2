@@ -12,7 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
     builder.Services.AddDbContext<DataContext>(options =>
-      options.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseConnection")));
+      
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseConnection")));
     builder.Services.AddScoped<OfferService>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
 {

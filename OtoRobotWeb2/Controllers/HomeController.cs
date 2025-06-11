@@ -82,12 +82,10 @@ namespace OtoRobotWeb2.Controllers
             return View();
         }
 
-
-
         [HttpPost]
-        public IActionResult IndexExcel(IFormFile formFile, string GrupID, List<int> firmalar)
+        public async Task<IActionResult> IndexExcel(IFormFile formFile, string GrupID, List<int> firmalar)
         {
-            //sayfaya giriş yetkisi var mı yok mu kontrolu
+            // Kullanıcının sayfaya giriş yetkisini kontrol et
             var identity = (ClaimsIdentity)User.Identity;
             var TopluSorgu = Convert.ToBoolean(identity.FindFirst("TopluSorgu").Value);
             if (!TopluSorgu) return NotFound();
@@ -95,69 +93,167 @@ namespace OtoRobotWeb2.Controllers
             string oemCount = "0";
             if (formFile != null)
             {
-                var currentpath = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-                var filePath = System.IO.Path.Combine(currentpath, "File", formFile.FileName);
-
-                using (var stream = System.IO.File.Create(filePath))
+                try
                 {
-                    var qwe = formFile.CopyToAsync(stream);
-                    qwe.Wait();
-                }
-                ExcelReader excelReader = new ExcelReader();
+                    // wwwroot/File dizinine dosya kaydetme işlemi
+                    var currentPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "File");
+                    if (!Directory.Exists(currentPath))
+                    {
+                        Directory.CreateDirectory(currentPath); // Dizin yoksa oluştur
+                    }
 
-                var list = excelReader.Aktar(filePath);
-                System.IO.File.Delete(filePath);
-                oemCount = list.Count.ToString();
-                if (list.Count > 0 && list.Count <= 50)
+                    // Benzersiz dosya ismi oluştur
+                    var uniqueFileName = $"{Guid.NewGuid()}{Path.GetExtension(formFile.FileName)}";
+                    var filePath = Path.Combine(currentPath, uniqueFileName);
+
+                    // Dosyayı kaydet
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await formFile.CopyToAsync(stream);
+                    }
+
+                    // Excel dosyasını okuyup içeriğini al
+                    List<ExcelOEM> list;
+                    using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                    {
+                        var excelReader = new ExcelReader();
+                        list = excelReader.Aktar(stream);
+                    }
+
+                    // Dosya okunduktan sonra güvenli bir şekilde sil
+                    try
+                    {
+                        System.IO.File.Delete(filePath);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Dosya silinirken hata oluştu: " + ex.Message);
+                    }
+
+                    oemCount = list.Count.ToString();
+
+                    // Eğer liste 1-50 arasında ise işleme devam et
+                    if (list.Count > 0 && list.Count <= 50)
+                    {
+                        var userId = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type.Contains("sid"))?.Value);
+                        var kullaniciKodu = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type.Contains("primarysid"))?.Value);
+
+                        var socketResponse = new SocketResponse
+                        {
+                            OemNumaralari = list.Select(x => x.OemKodu).ToList(),
+                            GrupID = GrupID,
+                            UserId = userId,
+                            KullaniciKodu = kullaniciKodu,
+                            SorgulanacakFirmalar = firmalar,
+                            StokVarmi = true,
+                            SorguId = Guid.NewGuid().ToString()
+                        };
+
+                        socketResponse.setProcessType(enum_Process.MultiOffer);
+
+                        // IIS uyumlu Task kullanımı
+                        Task.Run(() =>
+                        {
+                            if (RequestController.localdsocketprocescalistir)
+                            {
+                                new SocketProcess(socketResponse.UserId).SendRequestOffer(JsonConvert.SerializeObject(socketResponse));
+                            }
+                            else
+                            {
+                                var tvmDetay = Tools.TVMDetays.FirstOrDefault(x => x.Kodu == userId);
+                                if (tvmDetay != null)
+                                {
+                                    new HttpRequestProcess().HttpGetSendOffer(socketResponse, tvmDetay.WebAdresi).Wait();
+                                }
+                            }
+                        });
+                    }
+                }
+                catch (Exception ex)
                 {
-                    
-                    //var guidID = Guid.NewGuid().ToString();
-                    var userId = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type.Contains("sid")).Value);
-                    var kullanicikodu = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type.Contains("primarysid")).Value);
-
-                    SocketResponse socketResponse = new SocketResponse();
-                    socketResponse.OemNumaralari = list.Select(x => x.OemKodu).ToList();
-                    List<string> list1 = list.Select(x => x.OemKodu).ToList();
-                    Oem = list1;
-                    socketResponse.GrupID = GrupID;
-                    socketResponse.UserId = userId;
-                    socketResponse.KullaniciKodu = kullanicikodu;
-                    socketResponse.SorgulanacakFirmalar = firmalar;
-                    socketResponse.StokVarmi = true;
-                    socketResponse.SorguId = Guid.NewGuid().ToString();
-                    socketResponse.setProcessType(enum_Process.MultiOffer);
-
-
-                    if (RequestController.localdsocketprocescalistir)
-                        new Thread(new ThreadStart(() =>
-                        {
-                            new SocketProcess(socketResponse.UserId).SendRequestOffer(JsonConvert.SerializeObject(socketResponse));
-
-                        })).Start();
-                    else
-                        new Thread(new ThreadStart(() =>
-                        {
-                            new HttpRequestProcess().HttpGetSendOffer(socketResponse, Tools.TVMDetays.Where(x => x.Kodu == userId).FirstOrDefault().WebAdresi).Wait();
-                        })).Start();
-                    //foreach (var item in list)
-                    //{
-                    //    SocketResponse socketResponse = new SocketResponse();
-                    //    socketResponse.OEMNumarasi = item.OemKodu;
-                    //    socketResponse.GrupID = GrupID;
-                    //    socketResponse.UserId = userId;
-                    //    socketResponse.KullaniciKodu = kullanicikodu;
-                    //    socketResponse.SorgulanacakFirmalar = firmalar;
-                    //    socketResponse.SorguId = Guid.NewGuid().ToString();
-                    //    socketResponse.setProcessType(enum_Process.MultiOffer);
-
-                    //    new HttpRequestProcess().HttpGetSendOffer(socketResponse, Tools.TVMDetays.Where(x => x.Kodu == userId).FirstOrDefault().WebAdresi).Wait();
-                    //}
+                    Console.WriteLine("Hata oluştu: " + ex.Message);
+                    return BadRequest("Dosya işlenirken bir hata oluştu.");
                 }
-
-
             }
+
             return Ok(oemCount);
         }
+
+
+        //[HttpPost]
+        //public IActionResult IndexExcel(IFormFile formFile, string GrupID, List<int> firmalar)
+        //{
+        //    //sayfaya giriş yetkisi var mı yok mu kontrolu
+        //    var identity = (ClaimsIdentity)User.Identity;
+        //    var TopluSorgu = Convert.ToBoolean(identity.FindFirst("TopluSorgu").Value);
+        //    if (!TopluSorgu) return NotFound();
+
+        //    string oemCount = "0";
+        //    if (formFile != null)
+        //    {
+        //        var currentpath = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+        //        var filePath = System.IO.Path.Combine(currentpath, "File", formFile.FileName);
+
+        //        using (var stream = System.IO.File.Create(filePath))
+        //        {
+        //            var qwe = formFile.CopyToAsync(stream);
+        //            qwe.Wait();
+        //        }
+        //        ExcelReader excelReader = new ExcelReader();
+
+        //        var list = excelReader.Aktar(filePath);
+        //        System.IO.File.Delete(filePath);
+        //        oemCount = list.Count.ToString();
+        //        if (list.Count > 0 && list.Count <= 50)
+        //        {
+
+        //            //var guidID = Guid.NewGuid().ToString();
+        //            var userId = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type.Contains("sid")).Value);
+        //            var kullanicikodu = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type.Contains("primarysid")).Value);
+
+        //            SocketResponse socketResponse = new SocketResponse();
+        //            socketResponse.OemNumaralari = list.Select(x => x.OemKodu).ToList();
+        //            List<string> list1 = list.Select(x => x.OemKodu).ToList();
+        //            Oem = list1;
+        //            socketResponse.GrupID = GrupID;
+        //            socketResponse.UserId = userId;
+        //            socketResponse.KullaniciKodu = kullanicikodu;
+        //            socketResponse.SorgulanacakFirmalar = firmalar;
+        //            socketResponse.StokVarmi = true;
+        //            socketResponse.SorguId = Guid.NewGuid().ToString();
+        //            socketResponse.setProcessType(enum_Process.MultiOffer);
+
+
+        //            if (RequestController.localdsocketprocescalistir)
+        //                new Thread(new ThreadStart(() =>
+        //                {
+        //                    new SocketProcess(socketResponse.UserId).SendRequestOffer(JsonConvert.SerializeObject(socketResponse));
+
+        //                })).Start();
+        //            else
+        //                new Thread(new ThreadStart(() =>
+        //                {
+        //                    new HttpRequestProcess().HttpGetSendOffer(socketResponse, Tools.TVMDetays.Where(x => x.Kodu == userId).FirstOrDefault().WebAdresi).Wait();
+        //                })).Start();
+        //            //foreach (var item in list)
+        //            //{
+        //            //    SocketResponse socketResponse = new SocketResponse();
+        //            //    socketResponse.OEMNumarasi = item.OemKodu;
+        //            //    socketResponse.GrupID = GrupID;
+        //            //    socketResponse.UserId = userId;
+        //            //    socketResponse.KullaniciKodu = kullanicikodu;
+        //            //    socketResponse.SorgulanacakFirmalar = firmalar;
+        //            //    socketResponse.SorguId = Guid.NewGuid().ToString();
+        //            //    socketResponse.setProcessType(enum_Process.MultiOffer);
+
+        //            //    new HttpRequestProcess().HttpGetSendOffer(socketResponse, Tools.TVMDetays.Where(x => x.Kodu == userId).FirstOrDefault().WebAdresi).Wait();
+        //            //}
+        //        }
+
+
+        //    }
+        //    return Ok(oemCount);
+        //}
 
         [Authorize(Policy = "AdminOnly")]
         public IActionResult LogIndex()
@@ -193,12 +289,23 @@ namespace OtoRobotWeb2.Controllers
 
         [Authorize(Policy = "SuperAdmin")]
         [HttpPost]
+        // İlk aksiyon, sorgu parametreleri ile
         public IActionResult AdminLogIndex(int tvmkodu, int kullanicikodu, string sorgu, DateTime date_baslangic, DateTime date_bitis, DateTime date_ozet)
         {
             return View(PostLogIndex(tvmkodu, kullanicikodu, sorgu, date_baslangic, date_bitis, date_ozet));
         }
+     
+        void SetRadioFlags(OtoLogResponse log, string sorgu)
+        {
+            log.rd_detayli = sorgu == "sorguturu1";
+            log.rd_ozet = sorgu == "sorguturu2";
+            log.rd_multiozet = sorgu == "sorguturu3";
+            log.rd_multiozetWeb = sorgu == "sorguturu4";
+        }
+
         OtoLogResponse GetLogIndex()
         {
+
             var identity = (ClaimsIdentity)User.Identity;
 
             var id = Convert.ToInt32(identity.FindFirst(ClaimTypes.Sid).Value);
@@ -224,9 +331,10 @@ namespace OtoRobotWeb2.Controllers
             //                 Count = n.Count()
             //             })
             //             .OrderBy(n => n.Count).ToList();
+        
 
             OtoLogResponse logResponse = new OtoLogResponse { TVMKullanicilars = firmalist };
-
+        
             logResponse.Tvmdetay = _offerService.GetFirmaList();
             logResponse.TvmKodu = id;
             var temptvm = logResponse.Tvmdetay.Where(x => x.Value == id.ToString()).FirstOrDefault();
@@ -243,9 +351,10 @@ namespace OtoRobotWeb2.Controllers
 
         OtoLogResponse PostLogIndex(int tvmkodu, int kullanicikodu, string sorgu, DateTime date_baslangic, DateTime date_bitis, DateTime date_ozet)
         {
+            Console.WriteLine("Sorgu türü geldi: " + sorgu);
             var identity = (ClaimsIdentity)User.Identity;
 
-
+           
             var id = Convert.ToInt32(identity.FindFirst(ClaimTypes.Sid).Value);
             ViewBag.Id = id;
             List<SelectListItem> firmalist = new List<SelectListItem>();
@@ -255,6 +364,8 @@ namespace OtoRobotWeb2.Controllers
 
 
             OtoLogResponse logResponse = new OtoLogResponse { TVMKullanicilars = firmalist };
+            SetRadioFlags(logResponse, sorgu);
+            //logResponse.rd_multiozet = sorgu == "sorguturu4";
             logResponse.Tvmdetay = _offerService.GetFirmaList();
             logResponse.TvmKodu = tvmkodu;
             var temptvm = logResponse.Tvmdetay.Where(x => x.Value == tvmkodu.ToString()).FirstOrDefault();
@@ -345,10 +456,10 @@ namespace OtoRobotWeb2.Controllers
                 }
                 else
                 {
-                    
+
                     var res = new logTimeCollection(tvmkodu.ToString()).GetAllLogTime().Where(x => x.TotalSorguBaslangici.Date >= date_baslangic.Date && x.TotalSorguBaslangici.Date <= date_bitis.Date).ToList(); ;
-                    
-                    res = res.Where(x => x.KullaniciAdi=="multilog").ToList();
+
+                    res = res.Where(x => x.KullaniciAdi == "multilog").ToList();
                     //res = res.Where(x => x.TotalSorguBaslangici.Date >= date_baslangic.Date && x.TotalSorguBaslangici.Date <= date_bitis.Date).ToList();
                     res = res.OrderByDescending(x => x.TotalSorguBaslangici).ToList();
                     logResponse.LogTimes = res;
@@ -366,15 +477,39 @@ namespace OtoRobotWeb2.Controllers
 
                 }
             }
+            else if (sorgu == "sorguturu4")
+            {
+                logResponse.rd_multiozetWeb = true;
+
+                if (diffdate > 30)
+                {
+                    logResponse.HataMesaji = "En fazla 30 günlük listeleme yapılmaktadır.";
+                }
+                else if (date_baslangic.Date > date_bitis.Date)
+                {
+                    logResponse.HataMesaji = "Başlangıç tarihi bitiş tarihinden sonra olamaz.";
+                }
+                else
+                {
+                    // OfferService içindeki metodu çağırıyoruz
+                    var logs = _offerService.GetWebDataLogsWithJoin(date_baslangic, date_bitis);
+
+                    logResponse.WebDataLogs = logs;
+                    logResponse.Date_Baslangic = date_baslangic;
+                    logResponse.Date_Bitis = date_bitis;
+                    logResponse.Date_Ozet = DateTime.Now;
+                }
+            }
+
+
             if (logResponse.LogTimes != null)
             {
                 foreach (var item in logResponse.LogTimes)
                 {
-                    //item.TotalSorguBaslangici = item.TotalSorguBaslangici.AddHours(3);
-                    //item.TotalSorguBitis = item.TotalSorguBitis.AddHours(3);
-                    item.TotalSorguBaslangicDisplay = item.TotalSorguBaslangici.AddHours(3).ToString("dd.MM.yyyy hh:mm:ss");
-                    item.TotalSorguBitisDisplay = item.TotalSorguBitis.AddHours(3).ToString("dd.MM.yyyy hh:mm:ss");
-                    //var test=item.TotalSorguBaslangici.ToString("dd.MM.yyyy hh:mm:ss");
+                    item.TotalSorguBaslangici = item.TotalSorguBaslangici.AddHours(3);
+                    item.TotalSorguBitis = item.TotalSorguBitis.AddHours(3);
+                    item.TotalSorguBaslangicDisplay = item.TotalSorguBaslangici.ToString("dd.MM.yyyy HH:mm:ss");
+                    item.TotalSorguBitisDisplay = item.TotalSorguBitis.ToString("dd.MM.yyyy HH:mm:ss");
                 }
             }
             return logResponse;
@@ -425,17 +560,28 @@ namespace OtoRobotWeb2.Controllers
                 return Ok("Sonuç Bulunamadı");
             }
         }
-        [HttpGet]
-        public IActionResult DownloadOtorobotSorguFile()
+        public IActionResult LogDetails(DateTime startDate, DateTime endDate)
         {
-            // Since this is just and example, I am using a local file located inside wwwroot
-            // Afterwards file is converted into a stream
-            var path = Path.Combine(Environment.CurrentDirectory, "File/Sablon/OtoRobot_topluSorgu.xlsx");
-            var fs = new FileStream(path, FileMode.Open);
-
-            // Return the file. A byte array can also be used instead of a stream
-            return File(fs, "application/octet-stream", "OtoRobot_topluSorgu.xlsx");
+            var logs = _offerService.GetWebDataLogsWithJoin(startDate, endDate);
+            return View(logs); // logs verisini view'a gönder
         }
+
+        [HttpGet]
+        public async Task<IActionResult> DownloadOtorobotSorguFile()
+        {
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "File/Sablon/OtoRobot_topluSorgu.xlsx");
+
+            if (!System.IO.File.Exists(path))
+            {
+                
+                return NotFound("Dosya bulunamadı: " + path);
+            }
+
+            byte[] fileBytes = await System.IO.File.ReadAllBytesAsync(path); // "await" ekledik
+
+            return File(fileBytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "OtoRobot_topluSorgu.xlsx");
+        }
+
     }
 
 }

@@ -77,7 +77,7 @@
                             if (id != null)
                             {
 
-                                if (id == 100 || id == 208)
+                                if (id == 100 || id == 208 || id == 241)
                                 {
                                     <form asp-controller="Home" asp-action="LogIndex" method="get">
                                         <div class="row">
@@ -110,16 +110,27 @@
                                     <div class="col-3">
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="sorgu" id="detayli" checked="@Model.rd_detayli" value="sorguturu1">
-                                            <label class="form-check-label" for="sorgu"> Detaylı </label>
+                                            <label class="form-check-label" for="detayli"> Detaylı </label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="sorgu" id="ozet" checked="@Model.rd_ozet" value="sorguturu2">
-                                            <label class="form-check-label" for="sorgu"> Özet </label>
+                                            <label class="form-check-label" for="ozet"> Özet </label>
                                         </div>
-                                         <div class="form-check">
+                                        <div class="form-check">
                                             <input class="form-check-input" type="radio" name="sorgu" id="multiozet" checked="@Model.rd_multiozet" value="sorguturu3">
-                                            <label class="form-check-label" for="sorgu"> Toplu Oem Sorgu </label>
+                                            <label class="form-check-label" for="multiozet"> Toplu Oem Sorgu </label>
                                         </div>
+                                        @{
+                                            if (Model.TvmKodu==208)
+                                            {
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="sorgu" id="multiozetWeb" checked="@Model.rd_multiozetWeb" value="sorguturu4">
+                                                    <label class="form-check-label" for="multiozetWeb"> Web Toplu Oem Sorgu </label>
+                                                </div>
+                                            }
+                                        }
+                                      
+
                                     </div>
 
                                 </div>
@@ -138,7 +149,7 @@
 
                             </div>
                             @{
-                                string custom_style = "display:none",custom_style4="";
+                                string custom_style = "display:none", custom_style4 = "";
                                 if (Model.rd_detayli)
                                     custom_style = "";
                                 if (Model.rd_multiozet)
@@ -545,6 +556,77 @@
             <!--DETAYLI VERİ TABLOSU END-->
         }
     }
+
+
+
+    @{
+        if (Model != null && Model.WebDataLogs != null && Model.WebDataLogs.Any())
+        {
+            <!-- Detaylı Veri Tablosu -->
+            <div class="card" id="detayliTablo">
+                <h5 class="card-header bg-dark-blue py-4">Kayıt Listesi</h5>
+                <div class="card-body">
+                    <div class="row mb-5">
+                        <div class="col-12">
+                            <table id="example" class="stripe hover cell-border order-column" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th class="col-4">
+                                         Tarih -  Gelen Kayıt Sayısı
+                                        </th>
+                                        <th class="col-4">
+                                            Sorgudan Dönen Kayıt Sayısı
+                                        </th>
+                                        <th class="col-4">
+                                            Sorgu Yapılan Tedarikçi Sayısı
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.WebDataLogs)
+                                    {
+                                        var temptarih = item.SorguIslemTarihi.Split(',');
+                                        var tempsorgu = item.QueryCountRaw.Split(',');
+                                        var temptoplam = item.RecordCountRaw.Split(',');
+
+                                        // toplam sorgu sayısı
+                                        var toplamSorgu = tempsorgu.Sum(s => Convert.ToInt32(s.Trim()));
+
+                                        <tr>
+                                            <td class="col-4">@(@item.AxaTarih + " → " + item.RecordCountRaw.Split(',')[0])</td>
+
+                                            <td class="col-4">
+                                                @for (int i = 0; i < temptarih.Length; i++)
+                                                {
+                                                    @(temptarih[i].Trim() + " → " + tempsorgu[i].Trim()) <br />
+                                                }
+
+                                                <strong>Toplam Kayıt Sayısı = @toplamSorgu</strong>
+                                            </td>
+                                            <td class="col-4">24</td>
+                                        </tr>
+                                    }
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Detaylı Veri Tablosu End -->
+        }
+        else
+        {
+            //<p>Kayıt Bulunamadı.</p>
+        }
+    }
+
+
+
+
+
 </div>
 <script>
 
@@ -593,7 +675,7 @@
                 $("#ozetTablo").hide();
                 $("#ozetdate").hide();
                 $("#hatamesaji").hide();
-                 $("#div_kullanicilar").show();
+                $("#div_kullanicilar").show();
                 $('input[name="date_baslangic"]').attr("required", "");
                 $('input[name="date_bitis"]').attr("required", "");
                 $('input[name="date_ozet"]').removeAttr("required");
@@ -613,7 +695,7 @@
 
                 $('input[name="date_baslangic"]').removeAttr("required");
                 $('input[name="date_bitis"]').removeAttr("required");
-            } 
+            }
         });
         $("#multiozet").change(function () {
 
@@ -631,6 +713,21 @@
 
             }
         })
+        $("#multiozetWeb").change(function () {
+            var mozetweb = document.getElementById("multiozetWeb");
+            if (mozetweb.checked) {
+                $("#detaylidiv").show();
+                $("#detayliTablo").show();
+                $("#ozetTablo").hide();
+                $("#ozetdate").hide();
+                $("#hatamesaji").hide();
+                $("#div_kullanicilar").hide();
+                $('input[name="date_baslangic"]').attr("required", "");
+                $('input[name="date_bitis"]').attr("required", "");
+                $('input[name="date_ozet"]').removeAttr("required");
+            }
+        });
+
 
 
 

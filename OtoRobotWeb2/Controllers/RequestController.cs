@@ -17,6 +17,13 @@ using SharpCompress.Common;
 using Microsoft.AspNetCore.Http;
 using System.Reflection;
 using MessagePack;
+using OtoRobotWeb2.Models.Database;
+using OtoRobotWeb2.Models;
+using Microsoft.EntityFrameworkCore;
+using NPOI.SS.Formula.Functions;
+using MathNet.Numerics;
+using Microsoft.Data.SqlClient;
+using System.Data;
 
 namespace OtoRobotWeb2.Controllers
 {
@@ -25,27 +32,29 @@ namespace OtoRobotWeb2.Controllers
     [ApiController]
     public class RequestController : ControllerBase
     {
-        private OfferService _offerService;     
+        private OfferService _offerService;
         private readonly AppSettings _appSettings;  //asdad 
-        int userid = 0;  
+        int userid = 0;
+
+        private DataContext _context;
         //önemli olan yerler 
         public static bool localdsocketprocescalistir = false;//local calısmak icin true, canlıya alırken false yapılmalı!!!!sorguyu socketprcess projesine gonderme.
-        public static bool localdconncalistir = false   ;//local calısmak icin true, canlıya alırken false yapılmalı!!!! sorguyu conn projesine gonderme
+        public static bool localdconncalistir = false;//local calısmak icin true, canlıya alırken false yapılmalı!!!! sorguyu conn projesine gonderme
         public static List<ResponseItem> yanitVarMi1List = new List<ResponseItem>(); // Sonuc bulunamayan listesi
         public static List<ResponseItem> yanitVarMi2List = new List<ResponseItem>(); // Sonuc bulunamayan listesi
         public RequestController(OfferService offerService)
         {
             _offerService = offerService;
-        } 
+        }
         #region login process
         [HttpGet("sendlogin")]
         public IActionResult SendLogin()
-        { 
+        {
             return Ok(true);
         }
         [HttpGet("checklogin")]
         public IActionResult CheckLogin()
-       {
+        {
             SocketResponse socketResponse = new SocketResponse();
             socketResponse.setProcessType(enum_Process.LoginResult);
             socketResponse.UserId = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type.Contains("sid")).Value);
@@ -85,9 +94,9 @@ namespace OtoRobotWeb2.Controllers
             return Ok(true);
         }
 
-         
 
-         
+
+
 
 
 
@@ -99,7 +108,7 @@ namespace OtoRobotWeb2.Controllers
         [HttpGet("checkoffer")]
         [AllowAnonymous]
         public IActionResult CheckOffer([FromQuery] RequestInput key)
-            {
+        {
             SocketResponse socketResponse = new SocketResponse();
             socketResponse.setProcessType(enum_Process.OfferResult);
             socketResponse.UserId = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type.Contains("sid")).Value);
@@ -143,19 +152,19 @@ namespace OtoRobotWeb2.Controllers
 
             List<ResponseItemExcel> list = new List<ResponseItemExcel>();
             List<ResponseItem> liste2 = new List<ResponseItem>();
-           
+
 
             if (res != null)
             {
-                
+
 
                 if (res.OfferResult != null)
-                     
+
                 {
                     liste2 = res.OfferResult.Where(x => x.YanitVarmi == 0).ToList();
                     liste2 = liste2.Where(x => x.Stok.ToLower().Contains("var")).ToList();
                 }
-               
+
 
                 if (res.isFinished)
                 {
@@ -169,7 +178,7 @@ namespace OtoRobotWeb2.Controllers
                     {
                         var yanitVarMi0 = res.OfferResult.Where(x => x.YanitVarmi == 0).ToList();
                         var yanitVarMi1 = yanitVarMi0.Where(x => x.Stok.ToLower().Contains("yok")).ToList();
-                        yanitVarMi0 = yanitVarMi0.Where(x => x.Stok.ToLower().Contains("var")).ToList();  
+                        yanitVarMi0 = yanitVarMi0.Where(x => x.Stok.ToLower().Contains("var")).ToList();
                         yanitVarMi1.AddRange(res.OfferResult.Where(x => x.YanitVarmi == 1).ToList());
                         var yanitVarMi2 = res.OfferResult.Where(x => x.YanitVarmi == 2).ToList();
                         if (yanitVarMi0.Count > 0)
@@ -206,7 +215,7 @@ namespace OtoRobotWeb2.Controllers
                     var temp = JsonConvert.SerializeObject(exportbytes);
 
                     var path = AppContext.BaseDirectory + "\\File\\Download\\" + reportname + ".json";
-                   
+
                     System.IO.File.WriteAllText(path, temp);
 
 
@@ -242,6 +251,8 @@ namespace OtoRobotWeb2.Controllers
         [AllowAnonymous]
         public IActionResult SendOffer([FromQuery] RequestInput key)
         {
+
+
             if (key.SorgulanacakFirmalar == null || key.OemNumarasi == null)
                 return BadRequest();
 
@@ -302,7 +313,219 @@ namespace OtoRobotWeb2.Controllers
             }
             return Ok(res);
         }
+
+        //[HttpPost("SaveData")]
+        //public IActionResult SaveData([FromBody] TopluSorguKayit data)
+        //{
+        //    _context = new DataContext();
+
+        //    try
+        //    {
+        //        // Gelen veri için bir liste oluştur
+        //        List<TopluSorguKayit> list = new List<TopluSorguKayit>
+        //{
+        //    data // Gelen veriyi listeye ekle
+        //};
+
+        //        // Listeyi döngüyle işle
+        //        foreach (var item in list)
+        //        {
+        //            var today = DateTime.Today; // Bugünün tarihi
+
+        //            // Mevcut kaydı kontrol et
+        //            var tempsorgu = _context.TopluSorguKayit
+        //                .FirstOrDefault(x => x.SorgulananOemNo == item.SorgulananOemNo
+        //                                     && x.SirketAd == item.SirketAd);
+
+        //            if (tempsorgu != null)
+        //            {
+        //                // Tarih farkını hesapla
+        //                var dateDifference = Math.Abs((tempsorgu.Tarih.Date - today).TotalDays);
+
+        //                if (dateDifference >= 30)
+        //                {
+        //                    // Eğer 30 günden fazla fark varsa, mevcut kaydı güncelle
+        //                    tempsorgu.Tarih = today;
+        //                    tempsorgu.SorgulananOemNo = item.SorgulananOemNo;
+        //                    tempsorgu.SirketAd = item.SirketAd;
+        //                    tempsorgu.Stok = item.Stok;
+        //                    tempsorgu.OemNo = item.OemNo;
+        //                    tempsorgu.StokNo = item.StokNo;
+        //                    tempsorgu.UrunAd = item.UrunAd;
+        //                    tempsorgu.Marka = item.Marka;
+        //                    tempsorgu.kdvLi = item.kdvLi;
+        //                    tempsorgu.kdvSiz = item.kdvSiz;
+        //                    tempsorgu.ListeFiyati = item.ListeFiyati;
+
+        //                    // Güncellemeyi kaydet
+        //                    _context.SaveChanges();
+        //                }
+        //                else
+        //                {
+        //                    // Eğer aynı tarih ile kayıt zaten varsa, hata döndür
+        //                    return BadRequest(new { isFinished = false, message = " " });
+        //                }
+        //            }
+        //            else
+        //            {
+        //                // Eğer kayıt yoksa, yeni kayıt ekle
+        //                _context.TopluSorguKayit.Add(new TopluSorguKayit
+        //                {
+        //                    Tarih = today,
+        //                    SorgulananOemNo = item.SorgulananOemNo,
+        //                    SirketAd = item.SirketAd,
+        //                    Stok = item.Stok,
+        //                    OemNo = item.OemNo,
+        //                    StokNo = item.StokNo,
+        //                    UrunAd = item.UrunAd,
+        //                    Marka = item.Marka,
+        //                    kdvLi = item.kdvLi,
+        //                    kdvSiz = item.kdvSiz,
+        //                    ListeFiyati = item.ListeFiyati
+        //                });
+
+        //                // Yeni kaydı ekle
+        //                _context.SaveChanges();
+        //            }
+        //        }
+
+        //        return Ok(new { isFinished = true, message = " " });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(500, new { isFinished = false, message = "Bir hata oluştu", error = ex.Message });
+        //    }
+        //}
+
         #endregion
+
+
+
+
+        //[HttpPost("SaveDataList")]
+        //public async Task<IActionResult> SaveDataList([FromBody] List<TopluSorguKayit> dataList)
+        //{
+        //    try
+        //    {
+        //        if (dataList == null || !dataList.Any())
+        //            return BadRequest("Gönderilen veri listesi boş");
+
+        //        using (var context = new DataContext())
+        //        {
+        //            context.TopluSorguKayit.AddRange(dataList);
+        //            await context.SaveChangesAsync();
+        //        }
+
+        //        return Ok(new { isFinished = true });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(500, new { isFinished = false, message = ex.Message });
+        //    }
+        //}
+
+
+        [HttpPost("SaveDataList")]
+        public async Task<IActionResult> SaveDataList([FromBody] List<TopluSorguKayit> data)
+        {
+            if (data == null || !data.Any())
+            {
+                return BadRequest(new { isFinished = false, message = "Veri eksik veya geçersiz." });
+            }
+
+            // Gelen listeyi DataTable'e dönüştür
+            var dataTable = ConvertToDataTable(data);
+
+            try
+            {
+                using (var _context = new DataContext())
+                {
+                    var connection = _context.Database.GetDbConnection(); // DataContext üzerinden bağlantıyı al
+                    await connection.OpenAsync();
+
+                    using (SqlCommand command = connection.CreateCommand() as SqlCommand)
+                    {
+                        command.CommandText = "SaveDataList";
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        // TVP'yi parametre olarak ekle
+                        var parameter = command.Parameters.AddWithValue("@DataList", dataTable);
+                        parameter.SqlDbType = SqlDbType.Structured;
+                        parameter.TypeName = "dbo.TopluSorguKayitType";  
+
+                        // Prosedürü çalıştır
+                        await command.ExecuteNonQueryAsync();
+                    }
+                }
+
+                return Ok(new { isFinished = true, message = "Kayıt işlemi başarılı." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { isFinished = false, message = "Bir hata oluştu.", error = ex.Message });
+            }
+        }
+
+
+        private DataTable ConvertToDataTable(List<TopluSorguKayit> data)
+        {
+            DataTable table = new DataTable();
+
+            // Sütunlar
+            table.Columns.Add("SorgulananOemNo", typeof(string));
+            table.Columns.Add("Tarih", typeof(DateTime));
+            table.Columns.Add("SirketAd", typeof(string));
+            table.Columns.Add("Stok", typeof(string));
+            table.Columns.Add("OemNo", typeof(string));
+            table.Columns.Add("StokNo", typeof(string));
+            table.Columns.Add("UrunAd", typeof(string));
+            table.Columns.Add("Marka", typeof(string));
+            table.Columns.Add("Kdvli", typeof(string));
+            table.Columns.Add("Kdvsiz", typeof(string));
+            table.Columns.Add("ListeFiyati", typeof(string));
+            // table.Columns.Add("Kampanya", typeof(string));
+
+            // Satırları ekle
+            foreach (var item in data)
+            {
+                // Eğer tüm sütunlar aynı anda null ise satır ekleme
+                if (string.IsNullOrEmpty(item.Marka) &&
+                    string.IsNullOrEmpty(item.kdvLi) &&
+                    string.IsNullOrEmpty(item.kdvSiz) &&
+                    string.IsNullOrEmpty(item.StokNo) &&
+                    string.IsNullOrEmpty(item.UrunAd) &&
+                    string.IsNullOrEmpty(item.Stok) &&
+                    string.IsNullOrEmpty(item.ListeFiyati))
+                {
+                    continue; // Satır ekleme, sonraki öğeye geç
+                }
+
+                // Tarih güncelle
+                item.Tarih = DateTime.Today;
+
+                // Satırı tabloya ekle
+                table.Rows.Add(
+                    item.SorgulananOemNo,
+                    item.Tarih,
+                    item.SirketAd,
+                    item.Stok,
+                    item.OemNo,
+                    item.StokNo,
+                    item.UrunAd,
+                    item.Marka,
+                    item.kdvLi,
+                    item.kdvSiz,
+                    item.ListeFiyati
+                // item.Kampanya
+                );
+            }
+
+            return table;
+        }
+
+
+
+
 
         #region test
         // SocketScreen
