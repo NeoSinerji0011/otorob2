@@ -34,7 +34,7 @@ namespace OtoRobotWeb2.Controllers
     {
         private OfferService _offerService;
         private readonly AppSettings _appSettings;  //asdad 
-        int userid = 0;
+        int userid = 0; //adasd
 
         private DataContext _context;    
         //önemli olan yerler 
