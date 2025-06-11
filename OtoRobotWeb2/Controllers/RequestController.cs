@@ -36,7 +36,7 @@ namespace OtoRobotWeb2.Controllers
         private readonly AppSettings _appSettings;  //asdad 
         int userid = 0;
 
-        private DataContext _context;
+        private DataContext _context;    
         //önemli olan yerler 
         public static bool localdsocketprocescalistir = false;//local calısmak icin true, canlıya alırken false yapılmalı!!!!sorguyu socketprcess projesine gonderme.
         public static bool localdconncalistir = false;//local calısmak icin true, canlıya alırken false yapılmalı!!!! sorguyu conn projesine gonderme
