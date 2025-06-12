@@ -33,7 +33,7 @@ namespace OtoRobotWeb2.Controllers
     public class RequestController : ControllerBase
     {
         private OfferService _offerService;
-        private readonly AppSettings _appSettings;  //asdad 
+        private readonly AppSettings _appSettings;  //asdad err
         int userid = 0; //adasd
 
         private DataContext _context;    
