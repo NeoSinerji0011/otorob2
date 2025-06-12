@@ -21,10 +21,10 @@ namespace  OtoRobotWeb2.Models
         {
             var tempcontrol = false;
             //İSTANBUL BİLGİSAYAR DATABASE BAĞLANTI KODLARI 
-            string connectionString = (@"Server = tcp: neoonline.database.windows.net,1433; Initial Catalog = NeoOnline; Persist Security Info = False; User ID = NeosinerjiDBManager@neoonline; Password = NeoSnrj2017); MultipleActiveResultSets = True;          Encrypt = True; TrustServerCertificate = False; Connection Timeout = 400;");
+            //string connectionString = (@"Server = tcp: neoonline.database.windows.net,1433; Initial Catalog = NeoOnline; Persist Security Info = False; User ID = NeosinerjiDBManager@neoonline; Password = NeoSnrj2017); MultipleActiveResultSets = True;          Encrypt = True; TrustServerCertificate = False; Connection Timeout = 400;");
             
             
-            //string connectionString = (@"Server = tcp:91.93.56.75; Initial Catalog = NSEdirneTest2; Persist Security Info = False; User ID = NeosinerjiDBManager@neoonline; Password = NeoSnrj2017); MultipleActiveResultSets = True;Encrypt = True; TrustServerCertificate = True; Connection Timeout = 20;");
+             string connectionString = (@"Server = tcp:91.93.56.75; Initial Catalog = NSEdirneTest2; Persist Security Info = False; User ID = NeosinerjiDBManager@neoonline; Password = NeoSnrj2017); MultipleActiveResultSets = True;Encrypt = True; TrustServerCertificate = True; Connection Timeout = 20;");
 
 
             optionsBuilder.UseSqlServer(connectionString);
@@ -46,9 +46,9 @@ namespace  OtoRobotWeb2.Models
             if (tempcontrol)
             {
                 //EDİRNE SERVER DATABASE BAĞLANTI true 
-                string connectionString2 = (@"Server = tcp: neoonline.database.windows.net,1433; Initial Catalog = NeoOnline; Persist Security Info = False; User ID = NeosinerjiDBManager@neoonline; Password = NeoSnrj2017); MultipleActiveResultSets = True;          Encrypt = True; TrustServerCertificate = False; Connection Timeout = 400;"); 
+                //string connectionString2 = (@"Server = tcp: neoonline.database.windows.net,1433; Initial Catalog = NeoOnline; Persist Security Info = False; User ID = NeosinerjiDBManager@neoonline; Password = NeoSnrj2017); MultipleActiveResultSets = True;          Encrypt = True; TrustServerCertificate = False; Connection Timeout = 400;"); 
                 
-                //string connectionString2 = (@"Server = tcp:91.93.56.75; Initial Catalog = NSEdirneTest2; Persist Security Info = False; User ID = NeosinerjiDBManager@neoonline; Password = NeoSnrj2017); MultipleActiveResultSets = True;Encrypt = True; TrustServerCertificate = True; Connection Timeout = 25;");
+                string connectionString2 = (@"Server = tcp:91.93.56.75; Initial Catalog = NSEdirneTest2; Persist Security Info = False; User ID = NeosinerjiDBManager@neoonline; Password = NeoSnrj2017); MultipleActiveResultSets = True;Encrypt = True; TrustServerCertificate = True; Connection Timeout = 25;");
                 optionsBuilder.UseSqlServer(connectionString2);
                 try
                 {
